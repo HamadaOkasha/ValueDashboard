@@ -1,0 +1,15 @@
+﻿@model List<AttachmentsViewModel>
+@inject IJsonHelper Json;
+@{
+    var Id = ViewData["Id"] as string;
+}
+@foreach (var item in Model)
+{
+    <div class="col-lg-12">
+        <div class="form-group row">
+            <div class="col-lg-12">
+                <a href="@item.thumbnailUrl" target="_blank">@item.name</a>
+            </div>
+        </div>
+    </div>
+}

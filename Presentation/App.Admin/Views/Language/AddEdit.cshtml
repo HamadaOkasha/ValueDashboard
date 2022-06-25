@@ -1,0 +1,148 @@
+﻿@model LanguageModel
+
+@{
+    ViewBag.Title = Translate("admin.AddEdit").Text;
+}
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                <i class="icon-images3 mr-2"></i> <span class="font-weight-semibold"> @Translate("admin.Language").Text</span>
+            </h4>
+            <a asp-controller="Language" asp-action="AddEdit" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+    </div>
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>  @Translate("admin.Home").Text</a>
+                <span class="breadcrumb-item">     @Translate("admin.Language").Text</span>
+                <span class="breadcrumb-item active">@Translate("admin.AddEdit").Text  </span>
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+
+        </div>
+
+    </div>
+</div>
+<!-- /page header -->
+<div class="content">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">  @Translate("admin.AddEdit").Text </h5>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-action="AddEdit" asp-controller="Language" id="frmAddEdit" novalidate class="needs-validation" onsubmit="ShowLoading();">
+                <input asp-for="Id" type="hidden" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.Name").Text  <span class="text-danger">*</span></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name"></span>
+                            </div>
+                            <div class="col-md-6 mb-1">
+                                @{
+                                    var cultures = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.SpecificCultures)
+                                        .OrderBy(x => x.EnglishName)
+                                        .Select(x => new SelectListItem
+                                        {
+                                            Value = x.IetfLanguageTag,
+                                            Text = $"{x.EnglishName}. {x.IetfLanguageTag}"
+                                        });
+                                }
+
+                                <label for="validationCustom01">@Translate("admin.LanguageCulture").Text<span class="text-danger">*</span></label>
+                                <select asp-for="LanguageCulture" asp-items="@cultures" onchange="ChangeType();" class="form-control select2">
+                                </select>
+                                <span asp-validation-for="LanguageCulture"></span>
+                            </div>
+                            <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.DisplayOrder").Text<span class="text-danger">*</span></label>
+                                <input asp-for="DisplayOrder" class="form-control" />
+                                <span asp-validation-for="DisplayOrder"></span>
+                            </div>
+                            <div class="col-md-3 mb-1" style=" margin-top: 35px; ">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" asp-for="Rtl" class="form-check-input-styled" data-fouc>
+                                        @Translate("admin.SupportRtl").Text
+                                    </label>
+                                </div>
+                                <span asp-validation-for="Rtl"></span>
+                            </div>
+                            <div class="col-md-3 mb-1" style=" margin-top: 35px; ">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" asp-for="IsPublish" class="form-check-input-styled" data-fouc>
+
+                                        @Translate("admin.IsPublish").Text
+                                    </label>
+                                </div>
+                                <span asp-validation-for="IsPublish"></span>
+                            </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <a asp-controller="Language" asp-action="Index" class="btn btn-danger">Back<i class="icon-back-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    @if (Model.Id > 0)
+    {
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title"> @Translate("admin.LocaleStringResource").Text </h5>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-action="AddEdit" asp-controller="Language" id="frmAddEditstring" novalidate class="needs-validation" onsubmit="ShowLoading();">
+                    <input asp-for="ResourceModel.LanguageId" type="hidden" />
+                    <input asp-for="ResourceModel.Id" type="hidden" />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom01">@Translate("admin.ResourceName").Text</label>
+                                    <input asp-for="ResourceModel.ResourceName" class="form-control" maxlength="500" />
+                                    <span asp-validation-for="ResourceModel.ResourceName"></span>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationCustom01">@Translate("admin.ResourceValue").Text</label>
+                                    <input asp-for="ResourceModel.ResourceValue" class="form-control" maxlength="500" />
+                                    <span asp-validation-for="ResourceModel.ResourceValue"></span>
+                                </div>
+                            </div>
+                            <div class="form-group text-right">
+                                <button class="btn btn-primary" type="button" onclick="SaveLocaleStringResource();"> @Translate("admin.Save").Text</button>
+                                <a href="javascript:RefreshTable();" class="btn btn-danger">
+                                    <i class="icon-filter3 mr-2"></i>
+                                    @Translate("admin.Search").Text
+                                    <i class="icon-back-left"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <table id="table" class="table datatable-button-html5-basic">
+                                <thead>
+                                    <tr>
+                                        <th> @Translate("admin.ResourceName").Text</th>
+                                        <th> @Translate("admin.ResourceValue").Text</th>
+                                        <th> @Translate("admin.Options").Text</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <script src="~/ViewScripts/Language/LocaleStringResource.js"></script>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+
+</div>

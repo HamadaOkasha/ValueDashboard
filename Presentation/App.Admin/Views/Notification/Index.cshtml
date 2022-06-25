@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = Translate("Notifications").Text;
+}
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                <i class="icon-images3 mr-2"></i> <span class="font-weight-semibold">@Translate("Notifications").Text</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb  crumb1 ">
+                <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>  @Translate("Home").Text</a>
+                <a asp-controller="Notification" asp-action="Index" class="breadcrumb-item"><span class="breadcrumb-item active"> @Translate("Notifications").Text</span></a>
+                
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<div class="content">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> @Translate("Notifications").Text</h5>
+        </div>
+        <div class="card-body">
+            <table id="table" class="table datatable-button-html5-basic">
+                <thead>
+                    <tr>
+                        <th> @Translate("CustomerName").Text</th>
+                        <th> @Translate("Message").Text</th>
+                        <th> @Translate("CreateDate").Text</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+    </div>
+</div>
+<script src="~/ViewScripts/Notifications/Notifications.js"></script>

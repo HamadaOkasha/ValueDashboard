@@ -1,0 +1,52 @@
+﻿@model AdminPagesModel
+@{
+    ViewBag.Title = Translate("admin.AdminPages").Text;
+}
+
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                <i class="icon-images3 mr-2"></i> <span class="font-weight-semibold">@Translate("admin.AdminPages").Text</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>  @Translate("admin.Home").Text</a>
+                <span class="breadcrumb-item active"> @Translate("admin.AdminPages").Text</span>
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<div class="content">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> @Translate("admin.AdminPages").Text</h5>
+            <div class="header-elements">
+                <a asp-controller="AdminPages" asp-action="AddEdit" class="btn bg-info">
+                    <i class="icon-file-plus mr-2"></i>
+                    @Translate("admin.AddAdminPages").Text
+                </a>
+            </div>
+        </div>
+        <table class="table datatable-button-html5-basic">
+            <thead>
+                <tr>
+                    <th> @Translate("admin.PageTitle").Text</th>
+                    <th> @Translate("admin.ParentPageTitle").Text</th>
+                    <th> @Translate("admin.DisplayOrder").Text</th>
+                    <th> @Translate("admin.Icon").Text</th>
+                    <th> @Translate("admin.Options").Text</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<script src="~/ViewScripts/AdminPages/AdminPages.js"></script>

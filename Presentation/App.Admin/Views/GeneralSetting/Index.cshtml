@@ -1,0 +1,73 @@
+﻿@model GeneralSettingModel
+@{
+
+    ViewBag.Title = Translate("admin.GeneralSetting").Text;
+}
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                <i class="icon-images3 mr-2"></i> <span class="font-weight-semibold">@Translate("admin.GeneralSetting").Text </span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>@Translate("admin.Home").Text   </a>
+                <a asp-controller="GeneralSetting" asp-action="Index" class="breadcrumb-item"> <span class="breadcrumb-item active">@Translate("admin.GeneralSettingme").Text </span></a>
+
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<div class="content">
+    <form method="post" asp-action="Index" asp-controller="GeneralSetting" id="frmAddEdit" novalidate class="needs-validation" onsubmit="ShowLoading();">
+        <input asp-for="Id" type="hidden" />
+        <div class="card">
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="row">
+                        <div class="col-md-12 mb-1">
+                            <h5 class="card-title">@Translate("admin.Email Settings").Text</h5>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">@Translate("admin.UserName").Text<span class="text-danger">*</span></label>
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">@Translate("admin.Password").Text</label>
+                            <input asp-for="Password" class="form-control" maxlength="250" />
+                            <span asp-validation-for="Password"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">@Translate("admin.SMTP").Text<span class="text-danger">*</span></label>
+                            <input asp-for="SMTP" class="form-control" />
+                            <span asp-validation-for="SMTP"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">@Translate("admin.Port").Text<span class="text-danger">*</span></label>
+                            <input asp-for="Port" class="form-control" />
+                            <span asp-validation-for="Port"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">@Translate("admin.IsEnableSsl").Text <span class="text-danger">*</span></label>
+                            <input asp-for="IsEnableSsl" type="checkbox" />
+                            <span asp-validation-for="IsEnableSsl"></span>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <button class="btn btn-primary" type="submit">@Translate("admin.Submit").Text</button>
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-danger">@Translate("admin.Back").Text<i class="icon-back-left"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

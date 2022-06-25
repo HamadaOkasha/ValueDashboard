@@ -1,0 +1,16 @@
+1 - run Packge manger console
+2- write this command  : Enable-Migrations
+2- than write this command : Add-Migration AppDB-v1 -Context AppDbContext
+3- than write this command : Update-Database -Context AppDbContext
+
+
+Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="#1677bb" />
+                <Setter Property="Shell.TitleColor" Value="#1677bb" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="#1677bb"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="#1677bb"/>

@@ -1,0 +1,50 @@
+﻿@model UserLoginModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = Translate("Login").Text;
+}
+<div class="page-content login-bg">
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <!-- Content area -->
+        <div class="content d-flex justify-content-center align-items-center">
+            <!-- Login form -->
+            <form class="login-form" method="post" asp-action="Login" asp-controller="Account" id="frmAddEdit" onsubmit="ShowLoading();">
+                <div class="card mb-0">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <h5 class="mb-0">@Translate("admin.Login").Text</h5>
+                        </div>
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input asp-for="UserName" class="form-control" placeholder="@Translate("admin.Email").Text" />
+                            <div class="form-control-feedback">
+                                <i class="icon-user text-muted"></i>
+                            </div>
+                            <span asp-validation-for="UserName"></span>
+                        </div>
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input type="password" asp-for="Password" class="form-control" placeholder="@Translate("admin.Password").Text">
+                            <div class="form-control-feedback">
+                                <i class="icon-lock2 text-muted"></i>
+                            </div>
+                            <span asp-validation-for="Password"></span>
+                        </div>
+                        <div class="checkbox p-0">
+                            <input asp-for="RememberMe" type="checkbox">
+                            <label for="RememberMe">@Translate("admin.RememberMe").Text</label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn bg-info btn-block">@Translate("admin.Login").Text <i class="icon-circle-left2 mr-2"></i></button>
+                        </div>
+                        <div class="text-center">
+                            <a asp-controller="Account" asp-action="ForgotPassword">@Translate("admin.ForgetYourPassword").Text</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- /login form -->
+        </div>
+        <!-- /content area -->
+    </div>
+    <!-- /main content -->
+</div>

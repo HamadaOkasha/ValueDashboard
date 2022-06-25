@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Css Files-->
+    <!-- First Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Jvector Maps -->
+    <link rel="stylesheet" href="~/web/styles/jquery-jvectormap-2.0.5.css">
+    <!-- Main Css File -->
+    <link rel="stylesheet" href="~/web/styles/main.css">
+    <title>Value Dashboard</title>
+</head>
+<body>
+    <!-- Start Dashboard-->
+    <div class="dashboard" id="dashboard">
+
+      <!-- Spinner -->
+      <div id="spinner" class="show position-fixed w-100 d-flex align-items-center justify-content-center">
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+
+      <!-- Navigation bar-->
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">
+          <img src="~/web/imgs/logo-light.png" alt="">
+        </a>
+        <!-- Navigation User Items will be Visible in Mobile Only -->
+        <div class="nav__user nav__user--mobile d-flex d-lg-none">
+          <div class="user__items">
+            <button class="btn user__item sign-button btn-link my-2 my-sm-0" type="submit">Sign In</button>
+
+            <button class="btn user__item theme-toggler">
+              <i class="fa fa-moon-o moon-icon theme-changer-icon" aria-hidden="true"></i>
+              <i class="fa fa-sun-o sun-icon theme-changer-icon" aria-hidden="true"></i>
+            </button>
+
+            <div class="dropdown user__item">
+              <button class="btn user__item dropdown-toggle" type="button" id="dropdownMenuLnaguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLnaguage">
+                <a class="dropdown-item" href="#">En</a>
+                <a class="dropdown-item" href="#">Ar</a>
+                <a class="dropdown-item" href="#">Fr</a>
+              </div>
+            </div>
+        
+            <button class="btn user__item notification-button">
+              <i class="fa fa-bell-o" aria-hidden="true"></i>
+            </button>
+
+            <div class="dropdown user__item">
+              <button class="btn user__item dropdown-toggle" type="button" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuUser">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- Navigation Toggler Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </span>
+        </button>
+        
+        <!-- Toggler Menu -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav navbar__nav mr-auto">
+            <li class="nav-item nav__item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item nav__item active">
+              <a class="nav-link" href="#">Services <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item nav__item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item nav__item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+          </ul>
+
+          <!-- Navigation Search Box -->
+          <form class="form-inline my-2 my-lg-0 nav-form nav__form">
+            <input class="form-control mr-sm-2 shadow-none" type="search" placeholder="" aria-label="Search">
+            <button class="btn search-icon my-2 my-sm-0" type="submit">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </form>
+
+          <!-- Navigation User Items -->
+          <div class="nav__user d-none d-lg-flex">
+            <div class="user__items">
+              <button class="btn user__item sign-button btn-link my-2 my-sm-0" type="submit">Sign In</button>
+              
+              <button class="btn user__item theme-toggler">
+                <i class="fa fa-moon-o moon-icon theme-changer-icon" aria-hidden="true"></i>
+                <i class="fa fa-sun-o sun-icon theme-changer-icon" aria-hidden="true"></i>
+              </button>
+
+              <div class="dropdown user__item">
+                <button class="btn user__item dropdown-toggle" type="button" id="dropdownMenuLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-globe" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLang">
+                  <a class="dropdown-item" href="#">Ar</a>
+                  <a class="dropdown-item" href="#">En</a>
+                  <a class="dropdown-item" href="#">FR</a>
+                </div>
+              </div>
+          
+              <button class="btn user__item notification-button">
+                <i class="fa fa-bell-o" aria-hidden="true"></i>
+              </button>
+
+              <div class="dropdown user__item">
+                <button class="btn user__item dropdown-toggle" type="button" id="dropdownMenuuser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user-o" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuuser">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Dashboard Content-->
+      <div class="dashboard-content">
+        <!-- Side bar Section -->
+        <div class="side-bar">
+          <!-- Side Bar Toggler Button -->
+          <button type="button" class="btn side-bar__btn-toggler d-block d-lg-none">
+            <i class="fa fa-angle-right open font-weight-bold" aria-hidden="true"></i>
+            <i class="fa fa-times close" aria-hidden="true"></i>
+          </button>
+          <!-- Side Bar Menu -->
+          <div>
+            <ul class="side-bar__items list-unstyled">
+              <li class="side-bar__item side__item--menu">
+                  
+                <a asp-controller="Home" asp-action="Index" class="page-section-link active">
+                  <img src="~/web/imgs/home.png" class="side-bar__item--icon" alt="home">
+                  <span class="side-bar__item--text" >Home</span>
+                </a>
+              </li>
+              <li class="side-bar__item side__item--menu">
+                <a href="#" class="page-section-link">
+                  <img src="~/web/imgs/world-wide.png" class="side-bar__item--icon" alt="home">
+                  <span class="side-bar__item--text">Worldwide Corporate Core Values</span>
+                </a>
+              </li>
+              <li class="side-bar__item side__item--menu">
+                <a href="#" class="page-section-link">
+                  <img src="~/web/imgs/corporate-values.png" class="side-bar__item--icon" alt="home">
+                  <span class="side-bar__item--text">Corporate Values Profiling by Country</span>
+                </a>
+              </li>
+              <li class="side-bar__item side__item--menu">
+                <a href="#" class="page-section-link">
+                  <img src="~/web/imgs/sector.png" class="side-bar__item--icon" alt="home">
+                  <span class="side-bar__item--text">Worldwide Corporate Values by Sector</span>
+                </a>
+              </li>
+              <li class="side-bar__item side__item--menu">
+                <a asp-controller="SectoralCorporateValuesbyCountry" asp-action="Index">
+                  <img src="~/web/imgs/sectoral.png" class="side-bar__item--icon" alt="home">
+                  <span class="side-bar__item--text">Sectoral Corporate Values by Country</span>
+                </a>
+              </li>
+              <li class="side-bar__item side__item--menu terms">
+                <a asp-controller="BenchmarkingCorporateValues" asp-action="Index" class="page-section-link">
+                  <img src="~/web/imgs/benchmark.png" class="side-bar__item--icon" alt="home">
+                  <span class="side-bar__item--text">Benchmarking Corporate Values</span>
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <a class="terms" href="#" data-toggle="modal" data-target="#termsleModal">
+              <span class="terms side-bar__item--text">Terms</span>
+            </a>
+          </div>
+        </div> <!-- End Side Bar-->
+
+        <!-- Dashboard Main Contetnt-->
+        <div class="dashboard__main-content px-2">
+
+
+             @RenderBody()
+
+          <!-- Footer -->
+          <div class="container-fluid">
+            <footer class="footer mt-4 p-4 bkg-box d-flex justify-content-center justify-content-sm-between align-items-center">
+                <div class="copy-right d-flex flex-column align-items-center align-items-sm-start">
+                  <span class="copy-right__text">Powerd by AITSP</span>
+                  <span class="copy-right__text">All Copyright &copy; Reserved</span>
+                </div>
+                <ul class="social-media list-unstyled d-flex align-items-center mb-0">
+                  <li>
+                    <a href="#" class="p-1 mx-2">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="p-1 mx-2">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="p-1 mx-2">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                </ul>
+              </footer>
+          </div>
+
+        </div><!-- Dashboard Main Contetnt-->
+
+        <!-- Help Icon -->
+        <div id="help" class="help d-flex flex-column align-items-end">
+          <!-- Help Icon -->
+          <div id="help__icon" class="help__icon">
+            <img src="~/web/imgs/help-icon-light.png" alt="help-icon">
+          </div>
+        </div>
+
+        <!-- Chat Box -->
+        <div class="chat__box rounded">
+
+            <!-- Chat box header -->
+            <div class="media chat__header align-items-center sticky-top d-flex py-2 px-4">
+              <div class="chat__header__img p-2 rounded-circle mr-3">
+                <img src="~/web/imgs/help-icon-light.png" class="align-self-center img-fluid" alt="chat icon">
+              </div>
+              <div class="chat__header__body d-flex flex-column align-items-start media-body">
+                <h5 class="mt-0 mb-0">Chat with us!</h5>
+                <p class="mb-0">online</p>
+              </div>
+              <button type="button" class="close chat__header__close align-self-start" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="chat__box__content">
+              <!-- Chat Message Right -->
+              <div class="chat__message media p-2 right__message">
+                <div class="media-body chat__message__body">
+                  <div class="message bkg-box mb-1 p-3"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere voluptate amet doloribus natus quod mollitia, suscipit consequuntur nihil tempora, accusantium</div>
+                  <div class="message__time">
+                    <span class="time">01:00</span>
+                    <span class="day-night">AM</span>
+                  </div>
+                </div>
+                <div class="chat__message__img align-self-end mb-4"></div>
+              </div>
+
+              <!-- Chat Message Bot -->
+              <div class="chat__message media p-2 left__message chat__bot">
+                <div class="chat__message__img align-self-end mb-4">
+                  <img src="~/web/imgs/help-icon-light.png" class="align-self-center img-fluid" alt="Message icon">
+                </div>
+                <div class="media-body chat__message__body">
+                  <div class="message bkg-box mb-1 p-3"> 
+                    <div class="chat-ques d-flex flex-column ">
+                      <p class="mb-1">Choose Question</p>
+                      <span class="question bkg-box p-2 my-1">How Are You?</span>
+                      <span class="question bkg-box p-2 my-1">How Old Are You?</span>
+                      <span class="question bkg-box p-2 my-1">How Do You Do?</span>
+                    </div>
+                  </div>
+                  <div class="message__time">
+                    <span class="time">01:00</span>
+                    <span class="day-night">AM</span>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+        </div>
+
+        <!-- Terms Modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="termsleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable ">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h3>Defining the terms:</h3>
+                <!-- Terms box-1 -->
+                <div class="terms__box bkg-box mt-3 mb-3">
+                  <div class="title__box p-4 d-flex justify-content-between">
+                    <span class="text">Date of Sampling</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="slide__box">
+                      <p class="p-4 mb-0">when the sampling was conducted and last updated</p>
+                  </div>
+                </div>
+                <!-- Terms box-2 -->
+                <div class="terms__box bkg-box mt-3 mb-3">
+                  <div class="title__box p-4 d-flex justify-content-between">
+                    <span class="text">Sampling Size (Number of Companies)</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="slide__box">
+                      <p class="p-4 mb-0">number of companies that we sampled for this research work</p>
+                  </div>
+                </div>
+                <!-- Terms box-3 -->
+                <div class="terms__box bkg-box mt-3 mb-3">
+                  <div class="title__box p-4 d-flex justify-content-between">
+                    <span class="text">Number of Countries (Number)</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="slide__box">
+                      <p class="p-4 mb-0">number of companies that we sampled for this research work belonging in how many countries</p>
+                  </div>
+                </div>
+                <!-- Terms box-4 -->
+                <div class="terms__box bkg-box mt-3 mb-3">
+                  <div class="title__box p-4 d-flex justify-content-between">
+                    <span class="text">Number of Sectors (Number)</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="slide__box">
+                      <p class="p-4 mb-0">number of companies that we sampled for this research work belonging in how many sectors</p>
+                  </div>
+                </div>
+                <!-- Terms box-5 -->
+                <div class="terms__box bkg-box mt-3 mb-3">
+                  <div class="title__box p-4 d-flex justify-content-between">
+                    <span class="text">Published Values in Website (Number</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="slide__box">
+                      <p class="p-4 mb-0">total number of values published by the number ofsampled</p>
+                  </div>
+                </div>
+                <!-- Terms box-6 -->
+                <div class="terms__box bkg-box mt-3 mb-3">
+                  <div class="title__box p-4 d-flex justify-content-between">
+                    <span class="text">No Published Values in Website (Number)</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="slide__box">
+                      <p class="p-4 mb-0">number of sampled companies who have no published values in their websites</p>
+                  </div>
+                </div>
+                <!-- Terms box-7 -->
+                <div class="terms__box bkg-box mt-3 mb-3">
+                  <div class="title__box p-4 d-flex justify-content-between">
+                    <span class="text">Worldwide Common Values (total identified values)</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="slide__box">
+                      <p class="p-4 mb-0">from the common core filtering process,the number of common values from the total sampled companies</p>
+                  </div>
+                </div>
+                <!-- Terms box-8 -->
+                <div class="terms__box bkg-box mt-3 mb-3">
+                  <div class="title__box p-4 d-flex justify-content-between">
+                    <span class="text">Worldwide Top 10 Values</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="slide__box">
+                      <p class="p-4 mb-0">based on the available data, arranging the rank of values</p>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- End Dashboard Content -->
+    </div>
+    <!-- End Dashboard -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- ApexChart Js -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- Jquery vector Maps -->
+    <script src="~/web/scripts/jquery-jvectormap-2.0.5.min.js"></script>
+    <script src="~/web/scripts/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/web/scripts/maps.js"></script>
+    <!-- Parameters Chart js-->
+        <script src="~/web/scripts/parameters-chart.js"></script>
+ @*   <script>
+    $.ajax({
+        url: 'Home/Index',
+        success: function(one, two, three) {
+            console.log(one);
+            console.log(two);
+            console.log(three);
+        }
+    })
+    </script>*@
+    <!-- Columns Chart js-->
+    <script src="~/web/scripts/columns-chart.js"></script>
+    <!-- Main Js -->
+    <script src="~/web/scripts/main.js"></script>
+</body>
+</html>

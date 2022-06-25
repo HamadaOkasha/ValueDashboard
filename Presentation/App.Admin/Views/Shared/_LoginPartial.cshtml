@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@{
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
+
+}
+<li class="nav-item dropdown dropdown-user">
+    <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
+        <span> @_httpContextAccessor.HttpContext.User.Identity.Name</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a asp-action="ChangePassword" asp-controller="Account" class="dropdown-item"><i class="icon-cog5"></i> @Translate("ChangePass").Text</a>
+        @await Component.InvokeAsync("LangaugeSelector")
+        <a class="dropdown-item" href="@Url.Action("ClearCash","Home")">
+            <i class="icon-trash"></i>
+            @Translate("ClearCash").Text
+        </a>
+        <form class="form-inline" id="logoutForm" asp-action="SignOut" asp-controller="Account"  asp-route-returnUrl="@Url.Action("Index", "Home")">
+            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit();">
+                <i class="icon-switch2"></i>
+                @Translate("Logout").Text
+                
+            </a>
+        </form>
+
+    </div>
+</li>

@@ -1,0 +1,27 @@
+﻿@model string[]
+@{
+    var Items = ViewData["List"] as SelectList;
+    var Id = ViewData["Id"] as string;
+    var Required = ViewData["required"] as string;
+    var Placeholder = ViewData["Placeholder"] as string;
+}
+<select @if (Required == "required") { <text> required data-fouc</text> }
+        id="@Id" name="@Id" multiple="multiple"
+        data-placeholder="@Placeholder"
+        class="form-control form-control-select2-icons" data-fouc>
+    @foreach (var item in Items.Where(s=> s.Value != "0"))
+    {
+        if (Model != null && Model.Contains(item.Value))
+        {
+            <option value="@item.Value" selected>
+                @item.Text
+            </option>
+        }
+        else
+        {
+            <option value="@item.Value">
+                @item.Text
+            </option>
+        }
+    }
+</select>

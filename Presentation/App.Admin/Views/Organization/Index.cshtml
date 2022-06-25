@@ -1,0 +1,75 @@
+﻿@model OrganizationModel
+@{
+
+    ViewBag.Title = Translate("admin.Organization").Text;
+}
+<!-- Page header  -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                <i class="icon-images3 mr-2"></i> <span class="font-weight-semibold">@Translate("admin.Organization").Text </span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>@Translate("admin.Home").Text   </a>
+                <a asp-controller="Organization" asp-action="Index" class="breadcrumb-item"> <span class="breadcrumb-item active">@Translate("admin.HoOrganizationme").Text </span></a>
+
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<div class="content">
+
+    <div class="card">
+        <div class="card-header header-elements-inline ">
+            <h5 class="card-title">@Translate("admin.Organization").Text  </h5>
+            <div class="header-elements">
+                <a asp-controller="Organization" asp-action="AddEdit" class="btn bg-info">
+                    <i class="icon-file-plus mr-2"></i>
+
+                    @Translate("admin.AddOrganization").Text
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col-md-3 mb-1">
+                    <label for="validationCustom01">@Translate("admin.Name").Text <span class="text-danger">*</span></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div class="col-md-2" style="padding-top: 28px !important;">
+                    <button onclick="RefreshTable()" class="btn bg-info btn-block">
+                        <i class="icon-search4 mr-2"></i>
+                        @Translate("admin.Search").Text
+
+                    </button>
+                </div>
+            </div>
+
+            <table id="table" class="table datatable-button-html5-basic">
+                <thead>
+                    <tr>
+                        <th>@Translate("admin.Name").Text </th>
+                        <th>@Translate("admin.WebsiteUrl").Text </th>
+                        <th>@Translate("admin.Status").Text  </th>
+                        <th>@Translate("admin.Options").Text  </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+<script src="~/ViewScripts/Organization/Organization.js"></script>
+
+
+ 

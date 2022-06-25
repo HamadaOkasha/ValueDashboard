@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Benchmark Page -->
+<div id="benchmark-page" class="container-fluid page-section benchmark-page">
+    <!-- Countries and sectors box -->
+    <!-- Sellector Box -->
+    <div class="row countries-sectors">
+        <div class="col-xl countries-sectors__countries">
+            <div class="all__contries sellect-box">
+                <div class="left__arrows arrows arrows-rest-pages d-none d-md-block">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </div>
+                <div class="search-div">
+                    <label class="label d-block">Select Your Country</label>
+                    <input list="countires" placeholder="World Wide" class="search-country__box">
+                    <datalist id="countires">
+                        <option value="World Wide"/>
+                        <option value="Saudia Arabia"/>
+                        <option value="Egypt"/>
+                    </datalist>
+                </div>
+                <div class="right__arrows arrows arrows-rest-pages d-none d-md-block">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <!-- Sellector Box -->
+        <div class="col-xl countries-sectors__countries">
+            <div class="all__contries sellect-box">
+                <div class="left__arrows arrows arrows-rest-pages d-none d-md-block">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </div>
+                <div class="search-div">
+                    <label class="label d-block">Select Benchmarking Country</label>
+                    <input list="countires" placeholder="World Wide" class="search-country__box">
+                    <datalist id="countires">
+                        <option value="World Wide"/>
+                        <option value="Saudia Arabia"/>
+                        <option value="Egypt"/>
+                    </datalist>
+                </div>
+                <div class="right__arrows arrows arrows-rest-pages d-none d-md-block">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <!-- Sellector Box -->
+        <div class="col-xl countries-sectors__sectors">
+            <div class="all__sectors sellect-box">
+                <div class="left__arrows arrows arrows-rest-pages d-none d-md-block">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </div>
+                <div class="search-div">
+                    <label class="label d-block ">Select Benchmarking Sector</label>
+                    <input list="sectors" placeholder="World Wide" class="search-country__box">
+                    <datalist id="sectors">
+                        <option value="World Wide"/>
+                        <option value="Education"/>
+                        <option value="Finincial"/>
+                    </datalist>
+                </div>
+                <div class="right__arrows arrows arrows-rest-pages d-none d-md-block">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Bench-Mark Countries and sectors Selectors -->
+    <!-- Start Bench-Mark Dashboards -->
+    <div class="row bench-mark__compare">
+        <!-- Benchmark Prcentage -->
+        <div class="col-xl-3 mt-4">
+            <div id="benchmark-percentage-chart" class="benchmark-percentage-chart bkg-box"></div>
+            <div id="benchmark-percentage-chart-2" class="benchmark-percentage-chart bkg-box mt-4"></div>
+        </div>
+
+        <!-- Benchmark Line & Mix Chart -->
+        <div class="col-xl-9 mt-4">
+            <div id="benchmark-line-mix-chart" class="benchmark-line-mix-chart bkg-box"></div>
+        </div>
+    </div> <!-- End Benchmark Dashboard -->
+
+</div><!-- End Benchmark page-->

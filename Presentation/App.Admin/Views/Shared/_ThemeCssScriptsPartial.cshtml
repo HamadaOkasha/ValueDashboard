@@ -1,0 +1,79 @@
+﻿@*<link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet" type="text/css">*@
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+<link href="~/ContentAdmin/design/global_assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+<link href="~/ContentAdmin/design/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+<link href="~/ContentAdmin/design/assets/css/style.css" rel="stylesheet" type="text/css">
+<link href="~/ContentAdmin/lib/font-awesome/css/all.css" rel="stylesheet" type="text/css">
+
+@if (!CommonHelper.WorkingLanguage.Rtl)
+{
+    <link href="~/ContentAdmin/design/assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/ContentAdmin/design/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/ContentAdmin/design/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/ContentAdmin/design/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+}
+else
+{
+    <link href="~/ContentAdmin/design/assets-AR/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="~/ContentAdmin/design/assets-AR/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/ContentAdmin/design/assets-AR/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="~/ContentAdmin/design/assets-AR/css/layout.min.css" rel="stylesheet" type="text/css">
+}
+
+<script src="~/ContentAdmin/design/global_assets/js/main/jquery.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/main/bootstrap.bundle.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/loaders/blockui.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/visualization/d3/d3.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/ui/moment/moment.min.js"></script>
+
+<script src="~/ContentAdmin/design/global_assets/js/plugins/forms/selects/select2.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/forms/validation/validate.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/demo_pages/form_layouts.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/demo_pages/form_validation.js"></script>
+@*<script src="~/ContentAdmin/design/global_assets/js/demo_pages/jqueryui_forms.js"></script>*@
+<script src="~/ContentAdmin/design/global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/tables/datatables/extensions/select.min.js"></script>
+@if (!CommonHelper.WorkingLanguage.Rtl)
+{
+    <script src="~/ContentAdmin/design/global_assets/js/demo_pages/datatables_extension_buttons_print.js"></script>
+}
+else
+{
+    <script src="~/ContentAdmin/design/global_assets/js/demo_pages/datatables_extension_buttons_print_ar.js"></script>
+}
+<script src="~/ContentAdmin/design/global_assets/js/plugins/tables/datatables/extensions/jszip/jszip.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+
+<script src="~/ContentAdmin/design/global_assets/js/plugins/media/fancybox.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/demo_pages/gallery.js"></script>
+<script src="~/ContentAdmin/design/assets/js/app.js"></script>
+<link href="~/ContentAdmin/design/global_assets/css/sweetalert.css" rel="stylesheet">
+<script src="~/ContentAdmin/design/global_assets/js/sweetalert.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/notifications/jgrowl.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/notifications/noty.min.js"></script>
+<script src="~/ContentAdmin/design/assets/js/loader.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/visualization/echarts/echarts.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/demo_pages/charts/echarts/areas.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/plugins/editors/summernote/summernote.min.js"></script>
+<script src="~/ContentAdmin/design/global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyBfGNR96b8rvxFbLoIBK-6KBcsDiOnINto&amp;libraries=places"></script>
+<script src="~/js/site.js"></script>
+
+@*<script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/jquery.calendars.js")"></script>
+    <script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/jquery.calendars-ar.js")"></script>
+    <script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/jquery.calendars.plus.js")"></script>
+    <link rel="stylesheet" type="text/css" href="@Href("~/ContentAdmin/design/global_assets/js/plugins/pickers/ummalqura/jquery.calendars.picker.css")">
+    <script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/jquery.plugin.js")"></script>
+    <script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/jquery.calendars.picker.js")"></script>
+    <script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/jquery.calendars.ummalqura.js")"></script>
+    <script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/jquery.calendars.ummalqura-ar.js")"></script>
+    <script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/dateFormat.js")"></script>
+    <script type="text/javascript" src="@Href("~/ContentAdmin/UmAlquraCalendar/jquery-dateFormat.js")"></script>*@
+

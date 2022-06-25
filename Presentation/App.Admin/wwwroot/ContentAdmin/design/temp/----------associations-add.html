@@ -1,0 +1,836 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>جمعية المنصورة الخيرية للخدمات الاجتماعية والتنموية</title>
+    <link rel="shortcut icon" href="global_assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="global_assets/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet" type="text/css">
+<link href="global_assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+    <script src="global_assets/js/main/jquery.min.js"></script>
+    <script src="global_assets/js/plugins/extensions/jquery_ui/widgets.min.js"></script>
+    <script>$.widget.bridge('uitooltip', $.ui.tooltip);</script>
+    <script src="global_assets/js/main/bootstrap.bundle.min.js"></script>
+    <script src="global_assets/js/plugins/loaders/blockui.min.js"></script>
+    <script src="global_assets/js/plugins/visualization/d3/d3.min.js"></script>
+    <script src="global_assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+    <script src="global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+    <script src="global_assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+    <script src="global_assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script src="global_assets/js/plugins/pickers/daterangepicker.js"></script>
+    <script src="global_assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="global_assets/js/plugins/forms/validation/validate.min.js"></script>
+    <script src="global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script src="global_assets/js/demo_pages/form_layouts.js"></script>
+    <script src="global_assets/js/demo_pages/form_validation.js"></script>
+    <script src="global_assets/js/demo_pages/jqueryui_forms.js"></script>
+
+    <!-- Theme JS files -->
+    <script src="global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="global_assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="global_assets/js/plugins/tables/datatables/extensions/jszip/jszip.min.js"></script>
+    <script src="global_assets/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js"></script>
+    <script src="global_assets/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+    <script src="global_assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+    <script src="global_assets/js/demo_pages/datatables_buttons.js"></script>
+    <!-- /theme JS files -->
+    <script src="global_assets/js/plugins/media/fancybox.min.js"></script>
+    <script src="global_assets/js/demo_pages/gallery.js"></script>
+
+    <script src="global_assets/js/plugins/notifications/sweet_alert.min.js"></script>
+    <script src="global_assets/js/plugins/notifications/jgrowl.min.js"></script>
+    <script src="global_assets/js/plugins/notifications/noty.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script src="global_assets/js/plugins/editors/summernote/summernote.min.js"></script>
+    <!-- location picker -->
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyAPQXi7ZBZ73SPXi7JfHycSCi30thvQGCg&amp;libraries=places"></script>
+    <script src="global_assets/js/plugins/pickers/location/location.js"></script>
+    <script src="global_assets/js/demo_pages/picker_location.js"></script>
+
+    
+
+</head>
+<body class="navbar-top">
+    <!-- Main navbar -->
+    <div class="navbar navbar-expand-md navbar-dark fixed-top bg-info-700">
+        <div class="navbar-brand">
+            <a href="index.html" class="d-inline-block">
+                جمعية المنصورة الخيرية
+            </a>
+        </div>
+        <div class="d-md-none">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+                <i class="icon-tree5"></i>
+            </button>
+            <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+                <i class="icon-paragraph-justify3"></i>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+            <ul class="navbar-nav ml-md-3 mr-md-auto">
+                <li class="nav-item">
+                    <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+                        <i class="icon-paragraph-justify3"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <ul class="navbar-nav">
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
+                        <i class="icon-envelop5"></i>
+                        <span class="d-md-none ml-2">الرسائل</span>
+                        <span class="badge badge-pill bg-primary-400 ml-auto ml-md-0">2</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
+                        <div class="dropdown-content-header">
+                            <span class="font-weight-semibold">الرسائل</span>
+                            <a href="#" class="text-default" data-popup="tooltip" title="إعدادات الرسائل"><i class="icon-cog"></i></a>
+                        </div>
+                        <div class="dropdown-content-body dropdown-scrollable">
+                            <ul class="media-list">
+                                <li class="media">
+                                    <div class="mr-3 position-relative">
+                                        <img src="global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-title">
+                                            <a href="#">
+                                                <span class="font-weight-semibold">اسم المرسل</span>
+                                                <span class="text-muted float-right font-size-sm">04:58</span>
+                                            </a>
+                                        </div>
+                                        <span class="text-muted">السلام عليكم و رحمة الله و بركاته .. بخصوص ما تم الاتصال بكم ...</span>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <div class="mr-3 position-relative">
+                                        <img src="global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-title">
+                                            <a href="#">
+                                                <span class="font-weight-semibold">اسم المرسل</span>
+                                                <span class="text-muted float-right font-size-sm">04:58</span>
+                                            </a>
+                                        </div>
+                                        <span class="text-muted"> بخصوص ما تم الاتصال بكم السلام عليكم و رحمة الله و بركاته .. ...</span>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <div class="mr-3 position-relative">
+                                        <img src="global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-title">
+                                            <a href="#">
+                                                <span class="font-weight-semibold">اسم المرسل</span>
+                                                <span class="text-muted float-right font-size-sm">04:58</span>
+                                            </a>
+                                        </div>
+                                        <span class="text-muted">السلام عليكم و رحمة الله و بركاته .. بخصوص ما تم الاتصال بكم ...</span>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <div class="mr-3 position-relative">
+                                        <img src="global_assets/images/placeholders/placeholder.jpg" width="36" height="36" class="rounded-circle" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-title">
+                                            <a href="#">
+                                                <span class="font-weight-semibold">اسم المرسل</span>
+                                                <span class="text-muted float-right font-size-sm">04:58</span>
+                                            </a>
+                                        </div>
+                                        <span class="text-muted"> بخصوص ما تم الاتصال بكم السلام عليكم و رحمة الله و بركاته .. ...</span>
+                                    </div>
+                                </li>
+
+
+
+
+                            </ul>
+                        </div>
+                        <div class="dropdown-content-footer justify-content-center p-0">
+                            <a href="#" class="bg-light text-grey w-100 py-2 text-center" data-popup="tooltip" title="جميع الرسائل"><span class="d-block top-0"><i class="icon-envelop5 "></i> جميع الرسائل</span></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
+                        <i class="icon-bell3"></i>
+                        <span class="d-md-none ml-2">الإشعارات</span>
+                        <span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">5</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
+                            <div class="dropdown-content-header">
+                                <span class="font-weight-semibold">الإشعارات</span>
+                                <a href="#" class="text-default" data-popup="tooltip" title="إعدادات الإشعارات"><i class="icon-cog"></i></a>
+                            </div>
+                            <div class="dropdown-content-body dropdown-scrollable">
+                                <ul class="media-list">
+                                    <li class="media">
+                                        <div class="mr-3">
+                                            <a href="#" class="btn bg-transparent border-success text-success rounded-round border-2 btn-icon"><i
+                                                    class="icon-man-woman"></i></a>
+                                        </div>
+                                        <div class="media-body">
+                                            اشعار ما  <a href="#">فيه رابط </a>  بنص ما عشوائي
+                                            <div class="text-muted font-size-sm">Dec 18, 18:36</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-content-footer justify-content-center p-0">
+    
+                                <a href="#" class="bg-light text-grey w-100 py-2 text-center" data-popup="tooltip" title="جميع الرسائل"><span
+                                        class="d-block top-0"><i class="icon-bell3 "></i> جميع الإشعارات</span></a>
+                            </div>
+                        </div>
+                </li>
+                <li class="nav-item dropdown dropdown-user">
+                    <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
+                        <span>اسم  الأدمن</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item"><i class="icon-user"></i>الملف الشخصي</a>
+                        <a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> الرسائل <span class="badge badge-pill bg-blue ml-auto">58</span></a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="icon-cog5"></i> إعدادات الحساب </a>
+                        <a href="login_simple.html" class="dropdown-item"><i class="icon-switch2"></i> تسجيل الخروج</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page content -->
+    <div class="page-content">
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-dark sidebar-main sidebar-fixed sidebar-expand-md bg-info-800">
+            <!-- Sidebar mobile toggler -->
+            <div class="sidebar-mobile-toggler text-center">
+                <a href="#" class="sidebar-mobile-main-toggle">
+                    <i class="icon-arrow-right8"></i>
+                </a>
+                Navigation
+                <a href="#" class="sidebar-mobile-expand">
+                    <i class="icon-screen-full"></i>
+                    <i class="icon-screen-normal"></i>
+                </a>
+            </div>
+            <!-- /sidebar mobile toggler -->
+            <!-- Sidebar content -->
+            <div class="sidebar-content">
+
+                <!-- Main navigation -->
+                <div class="card card-sidebar-mobile">
+                    <ul class="nav nav-sidebar" data-nav-type="accordion">
+                        <!-- Main -->
+                        <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">القائمة</div> <i class="icon-menu" title="القائمة"></i></li>
+
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">
+                                <i class="icon-home4"></i>
+                                <span>
+                                     @SharedLocalizer["Home"]
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+                            <a href="#" class="nav-link"><i class="icon-users4"></i> <span>العضويات</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="العضويات">
+                                <li class="nav-item"><a href="associations.html" class="nav-link active"><i class="icon-office"></i>الجمعيات</a></li>
+                                <li class="nav-item"><a href="settlement-units.html" class="nav-link"><i class="icon-bed2"></i>وحدات التوطين</a></li>
+                                <li class="nav-item"><a href="clubs.html" class="nav-link"><i class="icon-store2"></i>النوادي</a></li>
+                                <li class="nav-item"><a href="educators.html" class="nav-link"><i class="icon-users2"></i>المربين</a></li>
+                                <li class="nav-item"><a href="beneficiaries.html" class="nav-link"><i class="icon-user-check"></i>المستفيدين</a></li>
+                                <li class="nav-item"><a href="orphan-ambassadors.html" class="nav-link"><i class="icon-user-tie"></i>سفراء الأيتام</a></li>
+                                <li class="nav-item"><a href="donors.html" class="nav-link"><i class="icon-coins"></i>الجهات المانحة</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="icon-magazine"></i> <span>المحتوى</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="المحتوى">
+                                <li class="nav-item">
+                                    <a href="orphan-statistics.html" class="nav-link"><i class="icon-percent"></i>احصائيات الأيتام</a>
+                                    <a href="events.html" class="nav-link"><i class="icon-cup2"></i>الفعاليات</a>
+                                    <a href="studies-and-research.html" class="nav-link"><i class="icon-graduation2"></i>دراسات وأبحاث</a>
+                                    <a href="associations-experiences.html" class="nav-link"><i class="icon-bookmark"></i>تجارب الجمعيات</a>
+                                    <a href="associations-initiatives.html" class="nav-link"><i class="icon-book"></i>مبادرات الجمعيات</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="icon-reading"></i> <span>  التدريب</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="التدريب">
+                                <li class="nav-item">
+                                    <a href="training-courses.html" class="nav-link"><i class="icon-reading"></i>الدورات التدريبية </a>
+                                    <a href="training-results.html" class="nav-link"><i class="icon-profile"></i>نتائج التدريب</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="icon-file-stats"></i><span>نماذج القياس</span></a>
+                                <ul class="nav nav-group-sub" data-submenu-title="نماذج القياس">
+                                    <li class="nav-item">
+                                        <a href="forms-list.html" class="nav-link"><i class="icon-file-spreadsheet"></i>قائمة النماذج</a>
+                                        <a href="measurement-results.html" class="nav-link"><i class="icon-file-stats"></i>نتائج القياس</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <li class="nav-item">
+                            <a href="attachments.html" class="nav-link">
+                                <i class="icon-attachment"></i>
+                                <span>
+                                    المرفقات
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link"><i class="icon-envelop3"></i> <span>  المراسلات</span></a>
+                            <ul class="nav nav-group-sub" data-submenu-title="xxxxx">
+                                <li class="nav-item">
+                                    <a href="sent-messages.html" class="nav-link"><i class="icon-paperplane"></i>الرسائل المرسلة</a>
+                                    <a href="incoming-messages.html" class="nav-link"><i class="icon-envelop3"></i>الرسائل الواردة</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="categories.html" class="nav-link"><i class="icon-price-tags"></i><span>التصنيفات</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="notifications.html" class="nav-link">
+                                <i class="icon-bell3"></i>
+                                <span>
+                                    الإشعارات
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item-header">
+                                <div class="text-uppercase font-size-xs line-height-xs">إعدادات المنصة </div> <i class="icon-menu" title="إعدادات المنصة"></i>
+                            </li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="icon-cogs"></i> <span> إعدادات المنصة </span></a>
+                                <ul class="nav nav-group-sub" data-submenu-title="إعدادات المنصة ">
+                                    <li class="nav-item"><a href="website-settings.html" class="nav-link"><i class="icon-power-cord"></i>الإعدادات  @SharedLocalizer["Home"]</a></li>
+                                    <li class="nav-item"><a href="email-settings.html" class="nav-link"><i class="icon-mention"></i>إعدادات البريد الالكتروني </a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="icon-browser"></i> <span>واجهة الموقع</span></a>
+                                <ul class="nav nav-group-sub" data-submenu-title="Menu levels">
+                                    <li class="nav-item"><a href="menu-ordering-settings.html" class="nav-link"> ترتيب القائمة</a></li>
+                                    <li class="nav-item"><a href="home-banner-settings.html" class="nav-link">إعدادات البانر الرئيسي</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="nav-item"><a href="texts.html" class="nav-link"><i class="icon-stack-text"></i> <span> إعدادات الرسائل </span></a></li>
+    
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="icon-user-lock"></i> <span>المستخدمين و الصلاحيات</span></a>
+                                <ul class="nav nav-group-sub" data-submenu-title="المستخدمين و الصلاحيات">
+                                    <li class="nav-item"><a href="permissions-groups.html" class="nav-link"><i class="icon-folder5"></i>مجموعات الصلاحيات</a></li>
+                                    <li class="nav-item"><a href="permissions-groups-add.html" class="nav-link"><i class="icon-folder-plus2"></i>إضافة مجموعة</a></li>
+                                    <li class="nav-item"><a href="permissions-members.html" class="nav-link"><i class="icon-users"></i>أعضاء المجموعات </a></li>
+                                    <li class="nav-item"><a href="permissions-members-add.html" class="nav-link"><i class="icon-user-plus"></i>إضافة عضو</a></li>
+                                </ul>
+                            </li>
+                        <!-- /main -->
+                    </ul>
+                </div>
+                <!-- /main navigation -->
+            </div>
+            <!-- /sidebar content -->
+
+        </div>
+        <!-- /main sidebar -->
+        <!-- Main content -->
+        <div class="content-wrapper">
+            <!-- Page header -->
+            <div class="page-header page-header-light">
+                <div class="page-header-content header-elements-md-inline">
+                    <div class="page-title d-flex">
+                        <h4><i class="icon-office mr-2"></i> <span class="font-weight-semibold">الجمعيات</span>  </h4>
+                        <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+                    </div>
+
+                </div>
+                <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+                    <div class="d-flex">
+                        <div class="breadcrumb">
+                            <a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>  @SharedLocalizer["Home"]</a>
+                            <span class="breadcrumb-item"> العضويات</span>
+                            <span class="breadcrumb-item"> الجمعيات</span>
+                            <span class="breadcrumb-item active">إضافة جمعية جديدة</span>
+                        </div>
+                        <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- /page header -->
+            <!-- Content area -->
+            <div class="content">
+
+
+                <div class="card">
+                    <div class="card-header header-elements-md-inline py-2">
+                        <h5 class="card-title ">بيانات الجمعية</h5>
+
+                    </div>
+                    <div class="nav-tabs-responsive bg-light border-top ">
+                        <ul class="nav nav-tabs nav-tabs-bottom flex-nowrap mb-0">
+                            <li class="nav-item"><a href="#course-overview" class="nav-link active" data-toggle="tab"><i class="icon-file-text mr-2"></i> البيانات الأساسية</a></li>
+                            <li class="nav-item"><a href="#course-attendees" class="nav-link" data-toggle="tab"><i class="icon-mention mr-2"></i> بيانات التواصل</a></li>
+                           
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="course-overview">
+                            <div class="card-body">
+
+
+                                <div class="card-body">
+                                    <form class="form-validate-jquery" action="#">
+                                        <div class="form-group row">
+                                            <label for="l1" class="col-lg-3 col-form-label">اسم الجمعية</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" name="l1" class="form-control" placeholder="اسم الجمعية" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label" for="fields">مجالات العمل</label>
+                                            <div class="col-lg-9">
+                                                <select multiple="multiple" data-placeholder="Enter tags" class="form-control form-control-select2-icons" required name="fields" data-fouc>
+                                                    <optgroup label="الخدمات">
+                                                        <option value="wordpress2" data-icon="heart-broken2">كفالة الأيتام</option>
+                                                        <option value="tumblr2" data-icon="heart5">رعاية المرضى</option>
+                                                        <option value="stumbleupon" data-icon="man-woman"> رعاية الأسر الفقيرة</option>
+                                                    </optgroup>
+                                                    <optgroup label="المنتجات ">
+                                                        <option value="pdf" data-icon="bed2">إطعام جائع</option>
+                                                        <option value="word" data-icon="user">الأسر المنتجة</option>
+                                                    </optgroup>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- -->
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-6 col-form-label" for="date">رقم الترخيص</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" name="l2" class="form-control" placeholder=" " minlength="6" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-6 col-form-label" for="date">الرقم البريدي </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="number" name="l5" class="form-control" placeholder="" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- -->
+                                         
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-6 col-form-label" for="date">تاريخ انتهاء الترخيص </label>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group">
+                                                            <span class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="icon-calendar"></i>
+                                                                </span>
+                                                            </span>
+                                                            <input type="text" name="date" class="form-control datepicker-menus" placeholder="اختر  تاريخ انتهاء الترخيص" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-6 col-form-label" for="date"> تاريخ التسجيل على المنصة  </label>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group">
+                                                            <span class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="icon-calendar"></i>
+                                                                </span>
+                                                            </span>
+                                                            <input type="text" name="date" class="form-control datepicker-menus" placeholder="اختر   تاريخ التسجيل على المنصة " required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        
+                                         
+
+
+                                        <!-- -->
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-6 col-form-label" for="date">العنوان</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" name="l2" class="form-control" placeholder="" minlength="6" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-6 col-form-label" for="date">المدينة </label>
+                                                    <div class="col-lg-6">
+                                                        <select class="form-control form-control-select2" name="city" required data-fouc>
+                                                            <optgroup label="منطقة الرياض">
+                                                                <option value="AK">الرياض</option>
+                                                                <option value="HI">المزاجمية</option>
+                                                                <option value="HI">أبانات</option>
+                                                                <option value="HI">الخرج</option>
+                                                            </optgroup>
+                                                            <optgroup label="المنطقة الشرقية">
+                                                                <option value="CA">الدمام</option>
+                                                            </optgroup>
+                                                            <optgroup label="منطقة المدينة المنورة">
+                                                                <option value="AZ">المدينة المنورة</option>
+                                                                <option value="CO">أحد</option>
+                                                            </optgroup>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- -->
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-6 col-form-label" for="date"> الموقع الالكتروني</label>
+                                                    <div class="col-lg-6">
+                                                        <input type="url" name="url" class="form-control" placeholder="" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-6 col-form-label" for="date"> البريد الالكتروني </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="email" class="form-control" placeholder="" readonly name="email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label"> شعار الجمعية</label>
+
+                                            <div class="col-lg-9">
+
+                                                <div class="media mt-0">
+                                                    <div class="mr-3">
+                                                        <a href="global_assets/images/placeholders/association.jpg" class="" data-popup="lightbox" rel="group">
+                                                            <img class="img-fluid " src="global_assets/images/placeholders/association.jpg" width="60" height="60" alt="">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="media-body">
+                                                        <input type="file" class="form-input-styled" data-fouc>
+                                                        <span class="form-text text-muted">الصور المسموح بها : gif, png, jpg. و تكون أقل من 2Mb</span>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label">صورة الترخيص</label>
+
+                                            <div class="col-lg-9">
+
+                                                <div class="media mt-0">
+                                                    <div class="mr-3">
+                                                        <a href="global_assets/images/placeholders/association-permission.jpg" class="" data-popup="lightbox" rel="group">
+                                                            <img class="img-fluid " src="global_assets/images/placeholders/association-permission.jpg" width="60" height="60" alt="">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="media-body">
+                                                        <input type="file" class="form-input-styled" data-fouc>
+                                                        <span class="form-text text-muted">الصور المسموح بها : gif, png, jpg. و تكون أقل من  2Mb</span>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+
+                                        <!-- -->
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label" for="desc">نبذة عن الجمعية</label>
+                                            <div class="col-lg-9">
+                                                <!--<textarea rows="5" cols="5" class="form-control" name="desc" required placeholder="اكتب نبذة عن الجمعية"></textarea>-->
+                                                <div class="summernote">
+                                                    <h2>Apollo 11</h2>
+                                                    <div class="float-right" style="margin-left: 20px;"><img alt="Saturn V carrying Apollo 11" class="right" src="http://c.cksource.com/a/1/img/sample.jpg"></div>
+                                                    <p><strong>Apollo 11</strong> was the spaceflight that landed the first humans, Americans <a href="#">Neil Armstrong</a> and <a href="#">Buzz Aldrin</a>, on the Moon on July 20, 1969, at 20:18 UTC. Armstrong became the first to step onto the lunar surface 6 hours later on July 21 at 02:56 UTC.</p>
+                                                    <p class="mb-3">Armstrong spent about <s>three and a half</s> two and a half hours outside the spacecraft, Aldrin slightly less; and together they collected 47.5 pounds (21.5&nbsp;kg) of lunar material for return to Earth. A third member of the mission, <a href="#">Michael Collins</a>, piloted the <a href="#">command</a> spacecraft alone in lunar orbit until Armstrong and Aldrin returned to it for the trip back to Earth.</p>
+                                                    <h5 class="font-weight-semibold">Technical details</h5>
+                                                    <p>Launched by a <strong>Saturn V</strong> rocket from <a href="#">Kennedy Space Center</a> in Merritt Island, Florida on July 16, Apollo 11 was the fifth manned mission of <a href="#">NASA</a>'s Apollo program. The Apollo spacecraft had three parts:</p>
+                                                    <ol>
+                                                        <li><strong>Command Module</strong> with a cabin for the three astronauts which was the only part which landed back on Earth</li>
+                                                        <li><strong>Service Module</strong> which supported the Command Module with propulsion, electrical power, oxygen and water</li>
+                                                        <li><strong>Lunar Module</strong> for landing on the Moon.</li>
+                                                    </ol>
+                                                    <p class="mb-3">After being sent to the Moon by the Saturn V's upper stage, the astronauts separated the spacecraft from it and travelled for three days until they entered into lunar orbit. Armstrong and Aldrin then moved into the Lunar Module and landed in the <a href="#">Sea of Tranquility</a>. They stayed a total of about 21 and a half hours on the lunar surface. After lifting off in the upper part of the Lunar Module and rejoining Collins in the Command Module, they returned to Earth and landed in the <a href="#">Pacific Ocean</a> on July 24.</p>
+                                                    <h5 class="font-weight-semibold">Mission crew</h5>
+
+                                                </div>
+                                                <script>$('.summernote').summernote();</script>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label"> العنوان على الخريطة </label>
+                                            <div class="col-lg-9">
+                                                <div class="map-container locationpicker-default"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+
+                                            <button type="submit" class="btn btn-primary"> حفظ <i class="icon-checkmark ml-2"></i></button>
+                                            <button type="button" class="btn btn-primary" id="save"> blockUi <i class="icon-checkmark ml-2"></i></button>
+                                            <button type="button" class="btn btn-primary" id="sweet_close"> sweet success <i class="icon-checkmark ml-2"></i></button>
+
+                                            <button type="button" class="btn btn-danger" id="noty_error">Error</button>
+                                            <button type="button" class="btn btn-success" id="noty_success">Success</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="course-attendees">
+                            <div class="card-body">
+                                <form action="#">
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">حساب الفيس بوك </label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" placeholder=" ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">حساب  تويتر </label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" placeholder=" ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">حساب يوتيوب </label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" placeholder=" ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">حساب  الانستغرام </label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" placeholder=" ">
+                                        </div>
+                                    </div>
+
+                                    <!--  person -->
+                                    <legend class="text-primary "><i class="icon-user-tie mr-2"></i>مدير الموقع</legend>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">الاسم </label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" placeholder="الاسم ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">الجوال </label>
+                                        <div class="col-lg-9">
+                                            <input type="number" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">البريد الالكتروني   </label>
+                                        <div class="col-lg-9">
+                                            <input type="email" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <!-- /person -->
+                                    <!--  person -->
+                                    <legend class="text-primary "><i class="icon-user-check mr-2"></i>المدير التنفيذي </legend>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">الاسم </label>
+                                        <div class="col-lg-9">
+                                            <input type="text" class="form-control" placeholder="الاسم ">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">الجوال </label>
+                                        <div class="col-lg-9">
+                                            <input type="number" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label">البريد الالكتروني   </label>
+                                        <div class="col-lg-9">
+                                            <input type="email" class="form-control" placeholder="">
+                                        </div>
+                                    </div>
+                                    <!-- /person -->
+                                     
+
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-primary"> حفظ <i class="icon-checkmark ml-2"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- -->
+                            <!-- -->
+                            <!-- -->
+
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- /content area -->
+            <!-- Footer -->
+            <div class="navbar navbar-expand-lg navbar-light">
+                <div class="text-center d-lg-none w-100">
+                    <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                        <i class="icon-unfold mr-2"></i>
+                        Footer
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-footer">
+                    <span class="navbar-text">
+                       ©2019 <a href="http://almansorah.org/" target="_blank"> جمعية المنصورة الخيرية للخدمات الاجتماعية والتنموية</a>  
+                    </span>
+
+                </div>
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /main content -->
+    </div>
+    <!-- /page content -->
+    <script>
+        // BLOCKUI
+        $('#save').on('click', function () {
+            $.blockUI({
+                message: '<span class="font-weight-semibold"><i class="icon-spinner4 spinner mr-2"></i>&nbsp; الرجاء الإنتظار</span>',
+                timeout: 2000, //unblock after 2 seconds
+                centerX: 0,
+                centerY: 0,
+                overlayCSS: {
+                    backgroundColor: '#000',
+                    opacity: 0.8,
+                    cursor: 'wait',
+                    zIndex:1200
+                },
+                css: {
+                    bottom: '15px',
+                    top: '',
+                    left: '',
+                    right: '15px',
+                    border: 0,
+                    padding: '10px 15px',
+                    color: '#000',
+                    width: 'auto',
+                    '-webkit-border-radius': 3,
+                    '-moz-border-radius': 3,
+                    backgroundColor: '#fff',
+                    zIndex: 1201
+                }
+            });
+        });
+        //SWEETALERTS
+        var setCustomDefaults = function () {
+            swal.setDefaults({
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-primary',
+                cancelButtonClass: 'btn btn-light'
+            });
+        }
+        setCustomDefaults();
+        $('#sweet_close').on('click', function () {
+            swal({
+                title: 'Good job!',
+                text: 'You clicked the button!',
+                type: 'success',
+                showCloseButton: true
+            }).catch(swal.noop);
+        });
+
+        // Override Noty defaults
+        Noty.overrideDefaults({
+            theme: 'limitless',
+            layout: 'topRight',
+            type: 'alert',
+            timeout: 2500
+        });
+
+        $('#noty_success').on('click', function () {
+            new Noty({
+                text: 'You successfully read this important alert message.',
+                type: 'success'
+            }).show();
+        });
+
+        // Error
+        $('#noty_error').on('click', function () {
+            new Noty({
+                text: 'Change a few things up and try submitting again.',
+                type: 'error'
+            }).show();
+        });
+    </script>
+
+    <script type="text/javascript">
+
+    $(".summernote").summernote({
+        lang: "ar-AR"
+    });
+    </script>
+</body>
+</html>

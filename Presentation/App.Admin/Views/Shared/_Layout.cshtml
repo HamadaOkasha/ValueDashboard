@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html @if (!CommonHelper.WorkingLanguage.Rtl) { <text> lang="en" </text>  } else { <text> lang="ar" dir="rtl" </text> }>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @Translate("PortalName").Text  </title>
+
+    <partial name="_ThemeCssScriptsPartial" />
+
+    @RenderSection("Styles", false)
+    <resources names='new[] { "SharedResource" }'></resources>
+
+
+</head>
+<body>
+    <!-- Main navbar -->
+    <div class="navbar navbar-expand-md navbar-dark">
+        <div class="navbar-brand">
+            <a class="d-inline-block" asp-controller="Home" asp-action="Index">@Translate("PortalName").Text 
+                <img src=~/ContentAdmin/design/m-logo.png />
+            </a>
+
+        </div>
+        <div class="d-md-none">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+                <i class="icon-tree5"></i>
+            </button>
+            <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+                <i class="icon-paragraph-justify3"></i>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+            <ul class="navbar-nav ml-md-3 mr-md-auto">
+                <li class="nav-item">
+                    <a class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+                        <i class="icon-paragraph-justify3"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @await Component.InvokeAsync("Notification")
+                }
+             
+                   <partial name="_LoginPartial" />
+
+                
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page content -->
+    <div class="page-content">
+        <!-- Main sidebar -->
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md">
+            <!-- Sidebar mobile toggler -->
+            <div class="sidebar-mobile-toggler text-center">
+                <a href="#" class="sidebar-mobile-main-toggle">
+                    <i class="icon-arrow-right8"></i>
+                </a>
+                -
+                <a href="#" class="sidebar-mobile-expand">
+                    <i class="icon-screen-full"></i>
+                    <i class="icon-screen-normal"></i>
+                </a>
+            </div>
+            <!-- /sidebar mobile toggler -->
+            <!-- Sidebar content -->
+            <div class="sidebar-content">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @await Component.InvokeAsync("Menu")
+                }
+
+            </div>
+            <!-- /sidebar content -->
+
+        </div>
+        <!-- /main sidebar -->
+        <!-- /main sidebar -->
+        <!-- Main content -->
+        <div class="content-wrapper">
+            @RenderBody()
+            <!-- Footer -->
+            <div class="navbar navbar-expand-lg navbar-light">
+                <div class="text-center d-lg-none w-100">
+                    <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                        <i class="icon-unfold mr-2"></i>
+                        ©2020, جميع الحقوق محفوظة
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-footer">
+                    <span class="navbar-text">
+                        @Translate("PortalName").Text
+                    </span>
+
+                </div>
+            </div>
+            <!-- /footer -->
+        </div>
+        <!-- /main content -->
+    </div>
+
+    <partial name="_ValidationScriptsPartial" />
+
+    @RenderSection("Scripts", false)
+
+    @if (TempData["errorMsg"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                swal({ title: '', text: "@Html.Raw(TempData["errorMsg"])", type: "error", confirmButtonText: "Ok", timer: 5000 });
+            });
+        </script>
+    }
+    @{
+        if (TempData["successMsg"] != null)
+        {
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    swal({ title: '', text: '@Html.Raw(TempData["successMsg"])', type: "success", confirmButtonText: "Ok", timer: 5000 });
+                });
+            </script>
+            TempData["successMsg"] = null;
+        }
+    }
+
+    <script>
+
+        $('.summernote').summernote({
+            height: 150,   //set editable area's height
+        });
+        $(".select2").select2({
+            // the following code is used to disable x-scrollbar when click in select input and
+            // take 100% width in responsive also
+            dropdownAutoWidth: true,
+            width: '100%'
+        });
+        function ShowModal(content) {
+            $('.modal-dialog').html(content);
+            $('#exampleModalfat').modal();
+        }
+        function ShowLoading() {
+            var $form1 = $('#frmAddEdit');
+            if ($form1.valid()) {
+                $.blockUI({
+                    baseZ: 10000000,
+                    // message: ''
+                    message: '',
+                });
+                return true;
+            }
+        }
+        function blockUI() {
+            $.blockUI({
+                baseZ: 10000000,
+                message: '',
+            });
+        }
+        function IsEnglishOnly(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            var englishAlphabetAndWhiteSpace = /[A-Za-z]/g;
+
+            var key = String.fromCharCode(evt.which);
+            //(charCode != 46 ||
+            //        $(this).val().indexOf('.') != -1) &&
+            if (charCode > 47 && charCode < 58) {
+                return false;
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                if (englishAlphabetAndWhiteSpace.test(key)) {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+        }
+        function IsArabicOnly(event) {
+            var arabicCharUnicodeRange = /[\u0600-\u06FF]/;
+            var key = event.which;
+            // 0 = numpad
+            // 8 = backspace
+            // 32 = space
+            if (key == 8 || key == 0) {
+                return true;
+            }
+
+            var str = String.fromCharCode(key);
+            if (arabicCharUnicodeRange.test(str)) {
+                return true;
+            }
+
+            return false;
+        }
+        $(document).ajaxStart(function () {
+            blockUI();
+        }).ajaxStop(function () { $.unblockUI(); });
+    </script>
+</body>
+</html>

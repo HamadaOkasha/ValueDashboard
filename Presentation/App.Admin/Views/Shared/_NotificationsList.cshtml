@@ -1,0 +1,54 @@
+﻿@model List<NotificationViewModel>
+
+@{
+    Layout = null;
+
+    int TotalRecored = 0;
+    if (Model.Any())
+    {
+        TotalRecored = Model.Count();
+    }
+}
+
+@*<a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">*@
+<a href="#" class="navbar-nav-link  caret-0" data-toggle="dropdown">
+    <span class="d-md-none ml-2">@Translate("Notifications").Text</span>
+    <span class="badge badge-pill bg-warning-400 ml-auto ">@TotalRecored</span>
+            <img src="~/ContentAdmin/design/global_assets/images/notification.png" width="25" height="25" class="rounded-circle" alt="">
+
+</a>
+
+<div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
+    <div class="dropdown-content-header">
+        <span class="font-weight-semibold">@Translate("Notifications").Text</span>
+        @*<a href="#" class="text-default"><i class="icon-compose"></i></a>*@
+    </div>
+
+    <div class="dropdown-content-body dropdown-scrollable">
+        <ul class="media-list">
+            @foreach (var item in Model)
+            {
+                <li class="media">
+                    <div class="mr-3 position-relative">
+                        <img src="~/ContentAdmin/design/global_assets/images/avatar.jpg" width="36" height="36" class="rounded-circle" alt="">
+                    </div>
+
+                    <div class="media-body">
+                        <div class="media-title">
+                            <a  asp-controller="Notification" asp-action="Index">
+                                <span class="font-weight-semibold">@item.CustomerName</span>
+                                <span class="text-muted float-right font-size-sm">@item.Since</span>
+                            </a>
+                        </div>
+
+                        <span class="text-muted">@Html.Raw(item.MessageBody)</span>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <div class="dropdown-content-footer justify-content-center p-0 text-center">
+        <a asp-controller="Notification" asp-action="Index" asp-area="" class="bg-light text-grey w-100 py-2" data-popup="tooltip" title="Load more">@Translate("AllNotifications").Text</a>
+    </div>
+</div>

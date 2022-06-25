@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "@fortawesome/fontawesome@1.1.8",
+      "destination": "wwwroot/fortawesome/fontawesome/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "font-awesome@5.15.4",
+      "destination": "wwwroot/ContentAdmin/lib/font-awesome/"
+    }
+  ]
+}

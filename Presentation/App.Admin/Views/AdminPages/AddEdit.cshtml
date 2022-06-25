@@ -1,0 +1,98 @@
+﻿@model AdminPagesModel
+
+@{
+    ViewBag.Title = Translate("admin.AddEdit").Text;
+}
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                <i class="icon-images3 mr-2"></i> <span class="font-weight-semibold">@Translate("admin.AdminPages").Text</span>
+            </h4>
+            <a asp-controller="AdminPages" asp-action="AddEdit" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+    </div>
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>  @Translate("admin.Home").Text</a>
+                <span class="breadcrumb-item">     @Translate("admin.AdminPages").Text</span>
+                <span class="breadcrumb-item active"> @Translate("admin.AddEdit").Text </span>
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+
+        </div>
+
+    </div>
+</div>
+<!-- /page header -->
+
+<div class="content">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">  @Translate("admin.AddEdit").Text </h5>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-action="AddEdit" asp-controller="AdminPages" id="frmAddEdit" onsubmit="ShowLoading();">
+                <input asp-for="Id" type="hidden" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-row">
+                            <div class="col-md-12 mb-1">
+                                @(await Html.LocalizedEditor<AdminPagesModel, AdminPagesLocalizedModel>("Group-name-localized", @<div>
+                                <div class="form-row">
+                             <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.PageTitle").Text </label>
+                                <input asp-for="@Model.Locales[item].PageTitle" class="form-control" />
+                                <span asp-validation-for="@Model.Locales[item].PageTitle"></span>
+                            </div>
+
+        </div>
+
+         <input type="hidden" asp-for="@Model.Locales[item].LanguageId" />
+    </div>
+    ,
+    @<div class="form-row">
+                             <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.PageTitle").Text  <span class="text-danger">*</span></label>
+                                <input asp-for="PageTitle" class="form-control" />
+                                <span asp-validation-for="PageTitle"></span>
+                            </div>
+
+        </div>))
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01">@Translate("admin.PageUrl").Text</label>
+                                <input asp-for="PageUrl" class="form-control" maxlength="300" />
+                                <span asp-validation-for="PageUrl"></span>
+                            </div>
+                            <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.Parent").Text</label>
+                                <select asp-for="ParentId" asp-items="@Model.ParentList" class="form-control select2">
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01">@Translate("admin.DisplayOrder").Text</label>
+                                <input asp-for="DisplayOrder" class="form-control" maxlength="300" />
+                                <span asp-validation-for="DisplayOrder"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01">@Translate("admin.Icon").Text</label>
+                                <input asp-for="Icon" class="form-control" maxlength="300" />
+                                <span asp-validation-for="Icon"></span>
+                            </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-primary" type="submit">@Translate("admin.Submit").Text</button>
+                            <a asp-controller="AdminPages" asp-action="Index" class="btn btn-danger">@Translate("admin.Back").Text<i class="icon-back-left"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

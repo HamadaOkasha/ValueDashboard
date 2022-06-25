@@ -1,0 +1,124 @@
+﻿@*<!DOCTYPE html>
+<html @if (!CommonHelper.WorkingLanguage.Rtl) { <text> lang="en" </text>  } else { <text> lang="ar" dir="rtl" </text> }>
+
+<head>
+
+    <meta charset="utf-8"  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @Translate("PortalName").Text  </title>
+
+    <partial name="_ThemeCssScriptsPartial" />
+
+    @RenderSection("Styles", false)
+
+    <resources names='new[] { "SharedResource" }'></resources>
+
+</head>
+<body>
+    <!-- Page content -->
+    <div class="page-content">
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /main content -->
+    </div>
+
+    <partial name="_ValidationScriptsPartial" />
+
+    @RenderSection("Scripts", false)
+
+    @if (TempData["errorMsg"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                swal({ title: '', text: "@Html.Raw(TempData["errorMsg"])", type: "error", confirmButtonText: "Ok", timer: 5000 });
+            });
+        </script>
+    }
+    @{
+        if (TempData["successMsg"] != null)
+        {
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    swal({ title: '', text: '@Html.Raw(TempData["successMsg"])', type: "success", confirmButtonText: "Ok", timer: 5000 });
+                });
+            </script>
+            TempData["successMsg"] = null;
+        }
+    }
+
+    <script>
+
+        $('.summernote').summernote({
+            height: 150,   //set editable area's height
+        });
+        $(".select2").select2({
+            // the following code is used to disable x-scrollbar when click in select input and
+            // take 100% width in responsive also
+            dropdownAutoWidth: true,
+            width: '100%'
+        });
+        function ShowModal(content) {
+            $('.modal-dialog').html(content);
+            $('#exampleModalfat').modal();
+        }
+        function ShowLoading() {
+            var $form1 = $('#frmAddEdit');
+            if ($form1.valid()) {
+                $.blockUI({
+                    baseZ: 10000000,
+                    // message: ''
+                    message: '',
+                });
+                return true;
+            }
+        }
+        function blockUI() {
+            $.blockUI({
+                baseZ: 10000000,
+                message: '',
+            });
+        }
+        function IsEnglishOnly(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            var englishAlphabetAndWhiteSpace = /[A-Za-z]/g;
+
+            var key = String.fromCharCode(evt.which);
+            //(charCode != 46 ||
+            //        $(this).val().indexOf('.') != -1) &&
+            if (charCode > 47 && charCode < 58) {
+                return false;
+            }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                if (englishAlphabetAndWhiteSpace.test(key)) {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+        }
+        function IsArabicOnly(event) {
+            var arabicCharUnicodeRange = /[\u0600-\u06FF]/;
+            var key = event.which;
+            // 0 = numpad
+            // 8 = backspace
+            // 32 = space
+            if (key == 8 || key == 0) {
+                return true;
+            }
+
+            var str = String.fromCharCode(key);
+            if (arabicCharUnicodeRange.test(str)) {
+                return true;
+            }
+
+            return false;
+        }
+        $(document).ajaxStart(function () {
+            blockUI();
+        }).ajaxStop(function () { $.unblockUI(); });
+    </script>
+</body>
+</html>
+*@

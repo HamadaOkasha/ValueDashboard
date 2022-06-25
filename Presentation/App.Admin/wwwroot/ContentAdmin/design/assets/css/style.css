@@ -1,0 +1,146 @@
+@media (min-width: 992px) {
+    .col-form-label {
+        text-align: right;
+    }
+}
+
+* {
+    font-family: 'Cairo', sans-serif;
+}
+
+a > .attach-type img {
+    background: #9bd5a2;
+}
+
+.attach-type {
+    padding: .75rem 0 0.5rem;
+    text-align: center;
+}
+
+    .attach-type img {
+        background: #e8e8e8;
+        padding: 1rem;
+        border-radius: 4px;
+    }
+
+.field-validation-error {
+    color: red !important;
+}
+
+.error {
+    color: red !important;
+}
+
+body.swal2-shown {
+    padding-right: 0 !important;
+}
+
+.navbar-brand {
+    font-size: initial;
+}
+
+    .navbar-brand a {
+        color: #fff;
+    }
+
+.login-bg { /* background: url('../../global_assets/images/login-bg.jpg') no-repeat center center; */
+    background-size: cover;
+}
+
+    .login-bg .card {
+        border: 1px solid #8c8c8c;
+        box-shadow: rgba(0,0,0,.5) 0px 0px 10px;
+    }
+
+a {
+    color: #00a8b7;
+}
+
+@media (min-width:576px) {
+    .col-sm-2-10 {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+input:read-only {
+    background-color: yellow;
+}
+
+.danger {
+    color: red !important;
+    font-weight: 700 !important;
+}
+.blockOverlay, .blockElement {
+    background-color: transparent !important;
+}
+.note-editor.note-frame.card {
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .1875rem;
+}
+.modal-header.bg-info-700 {
+    background-color: #6EFFD5 !important;
+    color: black !important;
+}
+
+li#container_noticiation span.badge.badge-pill.bg-warning-400.ml-auto.ml-md-0 {
+    top: 10%;
+    right: 8%;
+}
+a.navbar-nav-link.caret-0 img.rounded-circle {
+    height: 21px;
+    filter: brightness(24.5);
+}
+li.nav-item.dropdown.dropdown-user a.navbar-nav-link.dropdown-toggle {
+    padding-top: 15% !important;
+}
+
+
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-brand {
+        min-width: auto !important;
+    }
+}
+.navbar-brand img {
+    height: 3rem !important;
+    filter: invert(1);
+}
+.navbar-brand {
+   
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+ 
+}
+.bg-info {
+ 
+    background: linear-gradient( 270deg, rgba(166,169,169,1) 0%, rgba(0,0,6,1) 76%);
+}
+.btn-info {
+  
+    background: linear-gradient( 270deg, rgba(166,169,169,1) 0%, rgba(0,0,6,1) 100%);
+    color: #fff !important;
+}
+.btn-primary {
+    background: linear-gradient( 270deg, rgba(166,169,169,1) 0%, rgba(0,0,6,1) 100%);
+    color: #fff !important;
+}
+.btn-danger {
+    background: linear-gradient( 270deg, rgba(166,169,169,1) 0%, rgba(0,0,6,1) 100%);
+    color: #fff !important;
+}
+.qq-upload-list li.qq-upload-success {
+  
+    display: grid;
+    text-align: center;
+}
+.qq-uploader {
+ 
+    max-width: fit-content;
+}
+.qq-upload-file {
+ 
+    width: auto!important;
+ 
+}

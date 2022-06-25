@@ -1,0 +1,24 @@
+﻿
+@model List<NotificationViewModel>
+<li class="nav-item dropdown" id="container_noticiation">
+    <partial name="_NotificationsList" model="Model" />
+</li>
+
+<script>
+    $(document).ready(function () {
+        setInterval(function () {
+            ReloadNotifications();
+        }, 100000);
+    });
+    function ReloadNotifications() {
+        $.ajax({
+            cache: false,
+            url: '/Home/ReloadNotifications',
+            type: 'Get',
+            success: function (data) {
+                $("#container_noticiation").empty();
+                $("#container_noticiation").append(data);
+            },
+        });
+    }
+</script>

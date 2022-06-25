@@ -1,0 +1,16 @@
+﻿@model IEnumerable<LanguageModel>
+
+@{
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
+}
+@foreach (var item in Model)
+{
+    if (CommonHelper.WorkingLanguage.Id != item.Id)
+    {
+        <a class="dropdown-item" href="@Url.Action("SetLanguage","Home",new { langid= item.Id , returnUrl= returnUrl})" data-lng="@item.LanguageCulture">
+            <i class="icon-flag3"></i>
+            @item.Name
+        </a>
+    }
+
+}

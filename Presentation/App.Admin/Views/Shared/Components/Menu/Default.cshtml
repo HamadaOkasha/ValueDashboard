@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AdminPagesViewModel>
+@{
+    string ctrPageTitle = ViewContext.RouteData.Values["controller"].ToString();
+    string actionPageTitle = ViewContext.RouteData.Values["action"].ToString();
+}
+<div class="card card-sidebar-mobile">
+    <ul class="nav nav-sidebar" data-nav-type="accordion">
+        <li class="nav-item-header">
+            <div class="text-uppercase font-size-xs line-height-xs">@Translate("Menu").Text</div> <i class="icon-menu"></i>
+        </li>
+        <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link @if (ctrPageTitle=="Home") {<text>active</text> }"><i class="icon-home4"></i><span>@Translate("admin.Home").Text</span></a></li>
+
+        @foreach (var item in Model.Where(s => s.ParentId == 0))
+        {
+            var childList = Model.Where(s => s.ParentId == item.Id).ToList();
+            if (childList.Count == 0 && !string.IsNullOrEmpty(item.PageUrl))
+            {
+                <li class="nav-item"><a href="/@item.PageUrl" class="nav-link @if (item.PageUrl.ToLower() == ctrPageTitle.ToLower()) {<text>active</text> }"><i class="@item.Icon"></i><span>@item.PageTitle</span></a></li>
+            }
+            else if (childList.Count() > 0)
+            {
+                <li class="nav-item nav-item-submenu @if (childList.Select(s=>s.PageUrl.ToLower()).Where(s=> s == ctrPageTitle.ToLower()).Any()) {<text>nav-item-open</text> }">
+                    <a href="#" class="nav-link"><i class="@item.Icon"></i> <span> @item.PageTitle </span></a>
+                    <ul class="nav nav-group-sub" style="@if (childList.Select(s=>s.PageUrl.ToLower()).Where(s=> s == ctrPageTitle.ToLower()).Any()) {<text>display: block;</text> }" data-submenu-title="@item.PageTitle">
+                        @foreach (var child in childList)
+                        {
+                            <li class="nav-item">
+                                <a href="/@child.PageUrl" class="nav-link @if  (child.PageUrl.ToLower() == ctrPageTitle.ToLower()
+                                        || child.PageUrl.ToLower() == actionPageTitle.ToLower()) {<text>active</text> }">
+                                    <i class="@child.Icon"></i>
+                                    @child.PageTitle
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        }
+        <!-- /main -->
+    </ul>
+</div>

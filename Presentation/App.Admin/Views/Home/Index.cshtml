@@ -1,0 +1,463 @@
+﻿@{
+
+    ViewData["Title"] = "Home";
+}
+@using Microsoft.AspNetCore.Authentication
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                <i class="icon-home4 mr-2"></i> <span class="font-weight-semibold"> @Translate("admin.Home").Text</span>
+
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+</div>
+@*<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title"> @Translate("admin.OrderStatus").Text</h5>
+                    <div class="header-elements">
+                        <div class="list-icons">
+                            <a class="list-icons-item" data-action="collapse"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="chart-container">
+                        <div class="chart has-fixed-height" id="columns_order"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title"> @Translate("admin.CustomerTotal").Text</h5>
+                    <div class="header-elements">
+                        <div class="list-icons">
+                            <a class="list-icons-item" data-action="collapse"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="chart-container">
+                        <div class="chart has-fixed-height" id="columns_orderss"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+
+            <!-- Basic pie -->
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title">@Translate("admin.ordertotal").Text</h5>
+                    <div class="header-elements">
+                        <div class="list-icons">
+                            <a class="list-icons-item" data-action="collapse"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="chart-container">
+                        <div class="chart has-fixed-height" id="pie_basic"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /basic pie -->
+
+        </div>
+        </div>
+</div>*@
+
+<script>
+    $.post("/Home/LoadChartOrderTotal", function (data) {
+        var pie_basic_element = document.getElementById('pie_basic');
+
+        if (pie_basic_element) {
+
+            // Initialize chart
+            var pie_basic = echarts.init(pie_basic_element);
+
+
+            //
+            // Chart config
+            //
+
+            // Options
+            pie_basic.setOption({
+
+                // Colors
+                color: [
+                    '#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80',
+                    '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa',
+                    '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050',
+                    '#59678c', '#c9ab00', '#7eb00a', '#6f5553', '#c14089'
+                ],
+
+                // Global text styles
+                textStyle: {
+                    fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+                    fontSize: 13
+                },
+
+                // Add title
+                title: {
+                    text: '',
+                    subtext: '',
+                    left: 'center',
+                    textStyle: {
+                        fontSize: 17,
+                        fontWeight: 500
+                    },
+                    subtextStyle: {
+                        fontSize: 12
+                    }
+                },
+
+                // Add tooltip
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: 'rgba(0,0,0,0.75)',
+                    padding: [10, 15],
+                    textStyle: {
+                        fontSize: 13,
+                        fontFamily: 'Roboto, sans-serif'
+                    },
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+
+                // Add legend
+                legend: {
+                    orient: 'vertical',
+                    top: 'center',
+                    left: 0,
+                    data: data.status,
+                    itemHeight: 8,
+                    itemWidth: 8
+                },
+
+                // Add series
+                series: [{
+                    name: 'Browsers',
+                    type: 'pie',
+                    radius: '70%',
+                    center: ['50%', '57.5%'],
+                    itemStyle: {
+                        normal: {
+                            borderWidth: 1,
+                            borderColor: '#fff'
+                        }
+                    },
+                    data: data.listStatus
+                }]
+            });
+        }
+
+
+        //
+        // Resize charts
+        //
+
+        // Resize function
+        var triggerChartResize = function () {
+            pie_basic_element && pie_basic.resize();
+        };
+
+        // On sidebar width change
+        var sidebarToggle = document.querySelector('.sidebar-control');
+        sidebarToggle && sidebarToggle.addEventListener('click', triggerChartResize);
+
+        // On window resize
+        var resizeCharts;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeCharts);
+            resizeCharts = setTimeout(function () {
+                triggerChartResize();
+            }, 200);
+        });
+    });
+
+
+</script>
+<script>
+    $.post("/Home/LoadChartCustomerTotal", function (data) {
+
+        var columns_stacked_element = document.getElementById('columns_orderss');
+
+        if (columns_stacked_element) {
+
+            // Initialize chart
+            var columns_stacked = echarts.init(columns_stacked_element);
+
+            // Options
+            columns_stacked.setOption({
+
+                // Define colors
+                color: ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80'],
+
+                // Global text styles
+                textStyle: {
+                    fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+                    fontSize: 13
+                },
+
+                // Chart animation duration
+                animationDuration: 750,
+
+                // Setup grid
+                grid: {
+                    left: 0,
+                    right: 10,
+                    top: 35,
+                    bottom: 0,
+                    containLabel: true
+                },
+
+                // Add legend
+                legend: {
+                    data: data.status,
+                    itemHeight: 8,
+                    itemGap: 20
+                },
+
+                // Add tooltip
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(0,0,0,0.75)',
+                    padding: [10, 15],
+                    textStyle: {
+                        fontSize: 13,
+                        fontFamily: 'Roboto, sans-serif'
+                    },
+                    axisPointer: {
+                        type: 'shadow',
+                        shadowStyle: {
+                            color: 'rgba(0,0,0,0.025)'
+                        }
+                    }
+                },
+
+                // Horizontal axis
+                xAxis: [{
+                    type: 'category',
+                    data: data.dates,
+                    axisLabel: {
+                        color: '#333'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#999'
+                        }
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#eee',
+                            type: 'dashed'
+                        }
+                    }
+                }],
+
+                // Vertical axis
+                yAxis: [{
+                    type: 'value',
+                    axisLabel: {
+                        color: '#333'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#999'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#eee'
+                        }
+                    },
+                    splitArea: {
+                        show: true,
+                        areaStyle: {
+                            color: ['rgba(250,250,250,0.1)', 'rgba(0,0,0,0.01)']
+                        }
+                    }
+                }],
+
+                // Add series
+                series: data.liststatus
+            });
+        }
+
+
+        //
+        // Resize charts
+        //
+
+        // Resize function
+        var triggerChartResize2 = function () {
+            columns_stacked_element && columns_stacked.resize();
+        };
+
+        // On sidebar width change
+        var sidebarToggle = document.querySelector('.sidebar-control');
+        sidebarToggle && sidebarToggle.addEventListener('click', triggerChartResize2);
+
+        // On window resize
+        var resizeCharts;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeCharts);
+            resizeCharts = setTimeout(function () {
+                triggerChartResize2();
+            }, 200);
+        });
+
+    });
+
+
+</script>
+<script>
+    $.post("/Home/LoadChartOrder", function (data) {
+
+        var columns_stacked_element = document.getElementById('columns_order');
+
+        if (columns_stacked_element) {
+
+            // Initialize chart
+            var columns_stacked = echarts.init(columns_stacked_element);
+
+            // Options
+            columns_stacked.setOption({
+
+                // Define colors
+                color: ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80'],
+
+                // Global text styles
+                textStyle: {
+                    fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+                    fontSize: 13
+                },
+
+                // Chart animation duration
+                animationDuration: 750,
+
+                // Setup grid
+                grid: {
+                    left: 0,
+                    right: 10,
+                    top: 35,
+                    bottom: 0,
+                    containLabel: true
+                },
+
+                // Add legend
+                legend: {
+                    data: data.status,
+                    itemHeight: 8,
+                    itemGap: 20
+                },
+
+                // Add tooltip
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(0,0,0,0.75)',
+                    padding: [10, 15],
+                    textStyle: {
+                        fontSize: 13,
+                        fontFamily: 'Roboto, sans-serif'
+                    },
+                    axisPointer: {
+                        type: 'shadow',
+                        shadowStyle: {
+                            color: 'rgba(0,0,0,0.025)'
+                        }
+                    }
+                },
+
+                // Horizontal axis
+                xAxis: [{
+                    type: 'category',
+                    data: data.dates,
+                    axisLabel: {
+                        color: '#333'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#999'
+                        }
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#eee',
+                            type: 'dashed'
+                        }
+                    }
+                }],
+
+                // Vertical axis
+                yAxis: [{
+                    type: 'value',
+                    axisLabel: {
+                        color: '#333'
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: '#999'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#eee'
+                        }
+                    },
+                    splitArea: {
+                        show: true,
+                        areaStyle: {
+                            color: ['rgba(250,250,250,0.1)', 'rgba(0,0,0,0.01)']
+                        }
+                    }
+                }],
+
+                // Add series
+                series: data.listStatus
+            });
+        }
+
+
+        //
+        // Resize charts
+        //
+
+        // Resize function
+        var triggerChartResize2 = function () {
+            columns_stacked_element && columns_stacked.resize();
+        };
+
+        // On sidebar width change
+        var sidebarToggle = document.querySelector('.sidebar-control');
+        sidebarToggle && sidebarToggle.addEventListener('click', triggerChartResize2);
+
+        // On window resize
+        var resizeCharts;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeCharts);
+            resizeCharts = setTimeout(function () {
+                triggerChartResize2();
+            }, 200);
+        });
+
+    });
+
+
+</script>
+        <!-- /page header -->

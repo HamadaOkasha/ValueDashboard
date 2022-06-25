@@ -1,0 +1,15 @@
+﻿@using App.Admin.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@using App.Application.Model
+@using App.Application.ViewModels
+@using App.Application.Framwork
+@using Microsoft.AspNetCore.Http;
+@using App.Application.Interfaces
+
+@inject IHttpContextAccessor _httpContextAccessor
+@inject IUsersService _usersService
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@*@addTagHelper App.Resources.TagHelpers.ResourcesTagHelper, App.Resources*@
+@addTagHelper App.Application.TagHelpers.ResourcesTagHelper, App.Application
+@inherits App.Application.Razor.NopRazorPage<TModel>
+@*@inject IHtmlLocalizer<SharedResource> SharedLocalizer*@

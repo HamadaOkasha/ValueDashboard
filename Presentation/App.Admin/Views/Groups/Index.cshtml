@@ -1,0 +1,49 @@
+﻿@model GroupModel
+@{
+    ViewBag.Title = Translate("admin.RolesManagement ").Text;
+}
+
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                 <span class="font-weight-semibold">@Translate("admin.RolesManagement ").Text</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>  @Translate("admin.Home").Text</a>
+                <span class="breadcrumb-item active"> @Translate("admin.RolesManagement ").Text</span>
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<div class="content">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> @Translate("admin.RolesManagement ").Text</h5>
+            <div class="header-elements">
+                <a asp-controller="Groups" asp-action="AddEdit" class="btn btn-info">
+                    
+                    @Translate("admin.AddRole").Text
+                </a>
+            </div>
+        </div>
+        <table class="table datatable-button-html5-basic">
+            <thead>
+                <tr>
+                    <th> @Translate("admin.Name").Text</th>
+                    <th> @Translate("admin.Options").Text</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<script src="~/ViewScripts/Groups/Groups.js"></script>

@@ -1,0 +1,104 @@
+﻿@model AlrowadDataModel
+@{
+    ViewBag.Title = Translate("admin.AddEdit").Text;
+}
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4>
+                <i class="icon-images3 mr-2"></i> <span class="font-weight-semibold">@Translate("admin.AlrowadData").Text </span>
+            </h4>
+            <a asp-controller="AlrowadData" asp-action="AddEdit" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+    </div>
+    <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+        <div class="d-flex">
+            <div class="breadcrumb">
+                <a asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>  @Translate("admin.Home").Text</a>
+                <span class="breadcrumb-item"> @Translate("admin.AlrowadData").Text </span>
+                <span class="breadcrumb-item active"> @Translate("admin.AddEdit").Text </span>
+            </div>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>&nbsp;
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<div class="content">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">   @Translate("admin.AddEdit").Text  </h5>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-action="AddEdit" asp-controller="AlrowadData" id="frmAddEdit" novalidate class="needs-validation" onsubmit="ShowLoading();">
+                <input asp-for="Id" type="hidden" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-row">
+                           <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.Country").Text</label>
+                                <select asp-for="CountryId" asp-items="@Model.CountryList" class="form-control select2">
+                                </select>
+                                <span asp-validation-for="CountryId"></span>
+                            </div>
+                             <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.Category").Text</label>
+                                <select asp-for="CategoryId" asp-items="@Model.CategoryList" class="form-control select2">
+                                </select>
+                                 <span asp-validation-for="CategoryId"></span>
+                            </div>
+                            <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.Sector").Text</label>
+                                <select asp-for="SectorId" asp-items="@Model.SectorList" class="form-control select2">
+                                </select>
+                                 <span asp-validation-for="SectorId"></span>
+                            </div>
+                           <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.Organization").Text</label>
+                                <select asp-for="OrganizationId" asp-items="@Model.OrganizationList" class="form-control select2">
+                                </select>
+                                <span asp-validation-for="OrganizationId"></span>
+                            </div>
+                            <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.Value").Text</label>
+                                <select asp-for="ValueId" asp-items="@Model.ValueList" class="form-control select2">
+                                </select>
+                                <span asp-validation-for="ValueId"></span>
+                            </div>
+                            
+                            <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.ResearchValue").Text</label>
+                                <select asp-for="ResearchValueId" asp-items="@Model.ResearchValueList" class="form-control select2">
+                                </select>
+                                <span asp-validation-for="ResearchValueId"></span>
+                            </div>
+                            <div class="col-md-6 mb-1">
+                                <label for="validationCustom01">@Translate("admin.Version").Text</label>
+                                <select asp-for="AlrowadVersionId" asp-items="@Model.VersionList" class="form-control select2">
+                                </select>
+                                <span asp-validation-for="AlrowadVersionId"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="col-md-12 mb-1">
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="checkbox" asp-for="IsPublish" class="form-check-input-styled" data-fouc>
+                                    @Translate("admin.ispublish").Text
+                                </label>
+                            </div>
+                            <span asp-validation-for="IsPublish"></span>
+                        </div>
+                        <div class="form-group text-right">
+                            <button class="btn btn-primary" type="submit">@Translate("admin.Submit").Text</button>
+                            <a asp-controller="AlrowadData" asp-action="Index" class="btn btn-danger">@Translate("admin.Back").Text <i class="icon-back-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

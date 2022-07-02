@@ -59,7 +59,9 @@ namespace App.Application.Services
         public async Task InitModel(HomeViewModel model, string selectTitle = null)
         {
             model.CountryList = new SelectList(await _lookupSevices.GetCountryList(selectTitle), "Id", "Name");
-            model.SectorList = new SelectList(await _lookupSevices.GetSectorList(selectTitle), "Id", "Name");
+            model.SectorList = new SelectList(await _lookupSevices.GetSectorList(selectTitle, model.CountryId), "Id", "Name");
+            model.TopTenValueAndCountList = new SelectList(await _lookupSevices.GetValueAndCountList(selectTitle, model.CountryId), "Id", "Name");
+            model.CountryAndCountList = new SelectList(await _lookupSevices.GetCountryAndCountList(selectTitle,0), "Id", "Name");
             
         }
     }

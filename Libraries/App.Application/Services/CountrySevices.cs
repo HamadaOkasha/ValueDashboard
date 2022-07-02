@@ -102,29 +102,21 @@ namespace App.Application.Services
             }
         }
 
-        public HomeViewModel LoadDataTotal(int? country)
+        public HomeViewModel LoadDataTotal(int? CountryId, int? SectorId)
         {
-
             var model = new HomeViewModel();
-
-            model.TotalCategory = _CountryRepository.LoadItemsDataCategory(country);
-            model.TotalCountry = _CountryRepository.LoadItemsDataCountry(country);
-            model.TotalOrganization = _CountryRepository.LoadItemsDataOrganization();
-            model.TotalSector = _CountryRepository.LoadItemsDataSector();
-            model.TotalOrganizationWithoutValue = _CountryRepository.LoadItemsDataOrganzationWithoutValue();
-            model.TotalOrganizationWithValue = _CountryRepository.LoadItemsDataOrganzationWithValue();
-            model.TotalValue = _CountryRepository.LoadItemsDataValue();
-         
-
+            model.TotalCategory = _CountryRepository.LoadItemsDataCategory(CountryId);
+            model.TotalCountry = _CountryRepository.LoadItemsDataCountry(CountryId, SectorId);
+            model.TotalSector = _CountryRepository.LoadItemsDataSector(CountryId, SectorId);
+            model.TotalOrganization = _CountryRepository.LoadItemsDataOrganization(CountryId, SectorId);
+            model.TotalOrganizationWithoutValue = _CountryRepository.LoadItemsDataOrganzationWithoutValue(CountryId, SectorId);
+            model.TotalOrganizationWithValue = _CountryRepository.LoadItemsDataOrganzationWithValue(CountryId, SectorId);
+            model.TotalValue = _CountryRepository.LoadItemsDataValue(CountryId, SectorId);
             return model;
         }
         public TopTenViewModel LoadDataValueAndCount()
         {
-
             var model = new TopTenViewModel();
-
-          //  model.ValueCount = _CountryRepository.LoadItemsDataCategory();
-          
             return model;
         }
     }

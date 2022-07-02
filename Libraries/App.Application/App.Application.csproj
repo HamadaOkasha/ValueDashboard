@@ -31,6 +31,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\App.Domain\App.Domain.csproj" />
+    <ProjectReference Include="..\App.Infra.Data\App.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

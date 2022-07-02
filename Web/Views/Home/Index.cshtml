@@ -18,20 +18,20 @@
                 </div>
                 <div class="search-div">
                     <label class="label d-block d-md-none">Select Country</label>
-                     <input list="dlist" class="search-country__box">
-                    @*<div class="col-md-6 mb-1" id="countires">*@
-                    @* <label for="validationCustom01">Country</label>*@
-                    @*<select asp-for="CountryId" asp-items="@Model.CountryList" class="form-control select2"></select>
-                        <span asp-validation-for="CountryId"></span>*@
-                 @*   <Datalist asp-for="CountryId" asp-items="@Model.CountryList" class="form-control select2">
+                    @*   <input list="dlist" class="search-country__box">*@
+                    <div class="col-md-12 mb-6">
+                        @* <label for="validationCustom01">Country</label>*@
+                        <select asp-for="CountryId" asp-items="@Model.CountryList"  onchange="ChangeByCountryId()" class="form-control select2"></select>
                         <span asp-validation-for="CountryId"></span>
-                        @*  <option value="World Wide" />
+                        @*   <Datalist asp-for="CountryId" asp-items="@Model.CountryList" class="form-control select2">
+                            <span asp-validation-for="CountryId"></span>
+                            @*  <option value="World Wide" /> onchange="ChangeByCountryId()" id="CountryDropDown"
                             <option value="Saudia Arabia" />
                             <option value="Egypt" />*@
-                  @*   </Datalist>*@
-                    @*</div>*@
-                    <datalist id="dlist" runat="server">
-                    </datalist>
+                        @*   </Datalist>*@
+                    </div>
+                    @*  <datalist id="dlist" runat="server">
+                        </datalist>*@
                 </div>
                 <div class="right__arrows arrows d-none d-md-block">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -44,7 +44,7 @@
         </div>
         <div class="col-xl countries-sectors__sectors">
             <button type="button" class="btn prev__sectors prev-next__btn gradient-border d-none d-md-block">
-                Education
+                Education@*asp-items="@Model.SectorList.ElementAt(0)";*@
             </button>
             <div class="all__sectors sellect-box">
                 <div class="left__arrows arrows d-none d-md-block">
@@ -53,13 +53,17 @@
                 </div>
                 <div class="search-div">
                     <label class="label d-block d-md-none">Select Sector</label>
-                    <input list="sectors" placeholder="World Wide" class="search-country__box">
-
-                    <datalist id="sectors">
+                    <div class="col-md-12 mb-6">
+                        <select asp-for="SectorId" asp-items="@Model.SectorList" onchange="ChangeByCountryId()" class="form-control select2"></select>
+                        <span asp-validation-for="SectorId"></span>
+                    </div>
+                    @*onchange="GetToValueByCountryId()"*@
+                    @*<input list="sectors" placeholder="World Wide" class="search-country__box">
+                        <datalist id="sectors">
                         <option value="World Wide" />
                         <option value="Education" />
                         <option value="Finincial" />
-                    </datalist>
+                        </datalist>*@
                 </div>
                 <div class="right__arrows arrows d-none d-md-block">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -78,7 +82,7 @@
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 parameter">
             <img src="~/web/imgs/country-numbers.png" class="parameter__icon" alt="parameter-icon" />
             <h3>Number of Countries </h3>
-            <p>@Model.TotalCountry</p>
+            <p >@Model.TotalCountry</p>
         </div>
         <!-- parameter -->
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 parameter">
@@ -154,3 +158,253 @@
         </div>
     </div>
 </div>
+<script type="text/javascript"> 
+ 
+            //function ChangeByCountryId() {
+            //    debugger;
+            //    var CountryId = $("#CountryId").val();
+            //    var SectorId = $("#SectorId").val();
+            //    var url1 = '/Home/Index?CountryId=' + CountryId +"&SectorId=" + SectorId  ;
+            //    $.getJSON(url1, null,
+            //        function (data) {
+            //             debugger;
+            //             console.log(data);
+            //            $("#CountryId").empty();
+            //            $.each(data, function () {
+            //                $("#CountryId").append($("<option />").val(this.Value).text(this.Text));
+            //            });
+            //            $("#SectorId").empty();
+            //            $.each(data, function () {
+            //                $("#SectorId").append($("<option />").val(this.Value).text(this.Text));
+            //            });
+            //        });
+            //};
+function ChangeByCountryId() {
+            URLnavigator = "/Home/Index";
+            URLnavigator += "?CountryId=" + $("#CountryId").val() + "&SectorId=" + $("#SectorId").val();
+            window.location = URLnavigator;
+        }
+    @*Parameters Chart*@
+  var options = {
+   series: [@Model.TotalCountry, @Model.TotalSector, @Model.TotalOrganization, @Model.TotalOrganizationWithoutValue, @Model.TotalOrganizationWithValue],
+    chart: {
+    height: 286,
+    type: 'radialBar',
+    },
+  plotOptions: {
+    radialBar: {
+      track: {
+        show: true,
+        background: '#f2f2f2',
+            width: 100,
+        
+      },
+      dataLabels: {
+        name: {
+          fontSize: '22px',
+          // color: "#636363",
+
+        },
+        value: {
+          fontSize: '16px',
+
+        },
+        total: {
+          show: true,
+          label: 'Common Value',
+
+          formatter: function (w) {
+            // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+            return @Model.TotalValue//1700
+          }
+        },
+      },
+    }
+  },
+  fill: {
+    type: 'gradient',
+    colors: ['#1C9FD6' , '#0A2F85', '#FEB019', '#6E7C82', '#24C6C8'],
+  },
+  labels: ['Countries', 'Sectors', 'Companies', `Without Values(Co.)`, 'With Values(Co.)'],
+ };
+
+
+ debugger;
+    var list = JSON.parse('@Html.Raw(Json.Serialize(Model.TopTenValueAndCountList))');
+   var num= filldata(list);
+    var numbers = [];
+    var names = [];
+    num.forEach(myFunction)
+
+    function myFunction(item, index, arr) {
+        if(item.text =="World Wide"){
+
+        }
+        //if (index == 0) {
+        //    numbers.push(0);
+        //    names.push("");
+        //}
+        else {
+            numbers.push(item.value)
+            names.push(item.text)
+        }
+       
+    }
+    console.log(names);
+
+    function filldata(list) {
+    list = list || [];
+    list.push({ text: "", value: 0 });
+    if (list.length<10) {
+      list=filldata(list);
+    }
+    return list;
+}
+var options2 = {
+    series: [{
+    name: 'Inflation',
+
+   data:numbers,
+  }],
+    chart: {
+    height: 250,
+    type: 'bar',
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 10,
+      dataLabels: {
+        position: 'top', // top, center, bottom
+      },
+    }
+  },
+  dataLabels: {
+    enabled: true,
+    formatter: function (val) {
+      return val ;
+    },
+    offsetY: -20,
+    style: {
+      fontSize: '12px',
+      colors: ["#00ebe3"]
+    }
+  },
+  
+  xaxis: {
+      categories:names /*["ff" , "Innovation", "Respect", "Teamwork", "Excellence", "Accountability", "Commitment", "Quality", "Transparency", "Honesty"]*/,
+    position: 'top',
+    axisBorder: {
+      show: false
+    },
+    axisTicks: {
+      show: false
+    },
+    crosshairs: {
+      fill: {
+        type: 'gradient',
+        gradient: {
+          colorFrom: '#D8E3F0',
+          colorTo: '#BED1E6',
+          stops: [0, 100],
+          opacityFrom: 0.4,
+          opacityTo: 0.5,
+        }
+      }
+    },
+    tooltip: {
+      enabled: true,
+    }
+  },
+  yaxis: {
+    axisBorder: {
+      show: false
+    },
+    axisTicks: {
+      show: false,
+    },
+    labels: {
+
+      show: false,
+      formatter: function (val) {
+        return val + "%";
+      }
+    }
+  
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shade: 'dark',
+      gradientToColors: ['#00ebe3'],
+      shadeIntensity: 1,
+      type: 'horizontal',
+      opacityFrom: .9,
+      opacityTo: 1,
+      stops: [0, 100, 100, 100]
+    },
+  },
+  title: {
+    text: 'Monthly Inflation in Argentina, 2002',
+    floating: true,
+    offsetY: 330,
+    align: 'center',
+    style: {
+      color: '#444'
+    }
+  }
+};
+
+var gdpData = {
+  "AF": 16,
+  "AL": 11,
+  "DZ": 111,
+  "EG": 123,
+  "LY": 280
+};
+
+</script>
+@*<script type="text/javascript"> 
+function ChangeByCountryId() {
+            URLnavigator = "/Home/Index";
+            URLnavigator += "?CountryId=" + $("#CountryId").val() + "&SectorId=" + $("#SectorId").val();
+            window.location = URLnavigator;
+        }
+debugger;
+    var list = JSON.parse('@Html.Raw(Json.Serialize(Model.TopTenValueAndCountList))');
+  var num= filldata(list);
+    var numbers = [];
+    var names = [];
+    num.forEach(myFunction)
+
+    function myFunction(item, index, arr) {
+        if (index == 0) {
+            numbers.push(0);
+            names.push("");
+        }
+        else {
+            numbers.push(item.value)
+            names.push(item.text)
+        }
+       
+    }
+    console.log(names);
+
+    function filldata(list) {
+    list = list || [];
+    list.push({ text: "", value: 0 });
+    if (list.length<10) {
+      list=filldata(list);
+    }
+    return list;
+}
+
+function filldata(list) {
+    list = list || [];
+    list.push({ text: "", value: 0 });
+    if (list.length<10) {
+      list=filldata(list);
+    }
+    return list;
+}
+
+</script>*@

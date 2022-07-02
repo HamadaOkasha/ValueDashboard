@@ -18,7 +18,10 @@ namespace Web.Models
         public int TotalOrganizationWithValue { get; set; }
         public int CountryId { get; set; }
         public SelectList CountryList { get; set; }
+        public int SectorId { get; set; }
         public SelectList SectorList { get; set; }
+        public SelectList TopTenValueAndCountList { get; set; }
+        public SelectList CountryAndCountList { get; set; }
 
     }
 }

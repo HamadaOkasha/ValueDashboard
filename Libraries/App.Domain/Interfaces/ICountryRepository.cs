@@ -15,13 +15,13 @@ namespace App.Domain.Interfaces
         Task<Tuple<IList<Country>, int>> LoadItemsData(string Search, int StatusId, int jtStartIndex = 0,
             int jtPageSize = 10, string order = null, string orderDir = null, int languageId = 0);
         Task SaveItem(Country obj);
-        int LoadItemsDataCategory(int? country);
-        int LoadItemsDataCountry(int? country);
-        int LoadItemsDataOrganization();
-        int LoadItemsDataSector();
-        int LoadItemsDataOrganzationWithValue();
-        int LoadItemsDataOrganzationWithoutValue();
-        int LoadItemsDataValue();
+        int LoadItemsDataCategory(int? CountryId);
+        int LoadItemsDataCountry(int? CountryId, int? SectorId);
+        int LoadItemsDataOrganization(int? CountryId, int? SectorId);
+        int LoadItemsDataSector(int? CountryId, int? SectorId);
+        int LoadItemsDataOrganzationWithValue(int? CountryId, int? SectorId);
+        int LoadItemsDataOrganzationWithoutValue(int? CountryId, int? SectorId);
+        int LoadItemsDataValue(int? CountryId, int? SectorId);
 
         //IList<TopTenViewModel> LoadItemsDataValueAndName();
     }

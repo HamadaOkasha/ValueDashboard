@@ -33,12 +33,16 @@ namespace Web.Controllers
         //{
         //    return View();
         //}
-        public async Task<IActionResult> Index(int? country)
-        {
+        public async Task<IActionResult> Index(int CountryId=0, int SectorId = 0)
+       {
             var model = new Models.HomeViewModel();
-            var model1 = _CountrySevices.LoadDataTotal(country);
+            var model1 = _CountrySevices.LoadDataTotal(CountryId, SectorId);
             var model2 = new App.Application.ViewModels.HomeViewModel();
+            var model3 = new App.Application.ViewModels.HomeViewModel();
+            model2.CountryId = CountryId;
+            model2.SectorId = SectorId;
             await _initalizeModelLookups.InitModel(model2, _localeStringResourceSevices.GetResource("World Wide"));
+            await _initalizeModelLookups.InitModel(model3, _localeStringResourceSevices.GetResource("World Wide"));
             model.TotalCountry = model1.TotalCountry;
             model.TotalSector = model1.TotalSector;
             model.TotalValue = model1.TotalValue;
@@ -46,7 +50,9 @@ namespace Web.Controllers
             model.TotalOrganizationWithValue = model1.TotalOrganizationWithValue;
             model.TotalOrganizationWithoutValue = model1.TotalOrganizationWithoutValue;
             model.CountryList = model2.CountryList;
-           // dlist.innerHtml
+            model.SectorList = model2.SectorList;
+            model.TopTenValueAndCountList= model2.TopTenValueAndCountList;
+            model.CountryAndCountList = model3.CountryAndCountList;
             return View(model);
         }
         //public IActionResult LoadDataCountry()

@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using App.Domain.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
+//using Abp.Linq.Expressions;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
 
 namespace App.Infra.Data.Repositories
 {
@@ -118,89 +122,141 @@ namespace App.Infra.Data.Repositories
             var result = dataquery.AsQueryable();
             return result.Count();
         }
-        public int LoadItemsDataCountry(int? country)
+        public int LoadItemsDataCountry(int? country, int? SectorId)
         {
-            var dataquery = _context.Country.Where(x => !x.IsDeleted /*&& x.Id == country*/);
-            // var dataquery = _context.AlrowadData.Where(x => !x.IsDeleted && x.CountryId== _context.Country.);
-            var result = dataquery.AsQueryable();
-            return result.Count();
+            if (SectorId == 0) {
+                var dataquery = _context.Country.Where(x => !x.IsDeleted);
+                if (country > 0)
+                    dataquery = dataquery.Where(x => x.Id == country);
+                var result = dataquery.AsQueryable();
+                return result.Count();
+            }
+            else
+            {
+                var queryAlrowadData = _context.AlrowadData.Where(s => s.IsDeleted != true && s.IsPublish == true);
+                queryAlrowadData = queryAlrowadData.Where(x => x.SectorId == SectorId);
+                var countries = queryAlrowadData.GroupBy(s => s.CountryId);
+                return countries.Count();
+            }
+            
         }
-        public int LoadItemsDataOrganization()
+        public int LoadItemsDataOrganization(int? CountryId, int? SectorId)
         {
-            //string sqlQuery = "select * from Organzation";
-            //SqlCommand sql = new SqlCommand(sqlQuery);
-            var dataquery = _context.Organization.Where(x => !x.IsDeleted);
+            if (CountryId == 0)
+            {
+                if (SectorId > 0)
+                {
+                    var queryAlrowadData = _context.AlrowadData.Where(s => s.IsDeleted != true && s.IsPublish == true);
+                    queryAlrowadData = queryAlrowadData.Where(x => x.SectorId == SectorId);
+                    var organizations = queryAlrowadData.GroupBy(s => s.OrganizationId);
+                    return organizations.Count();
+                }
 
-            var result = dataquery.AsQueryable();
-            return result.Count();
+                else {
+                    var dataOrganization = _context.Organization.Where(x => !x.IsDeleted && x.IsPublish == true);
+                    var result = dataOrganization.AsQueryable();
+                    return result.Count();
+                }
+                
+            }
+            else
+            {
+                var queryAlrowadData = _context.AlrowadData.Where(s => s.IsDeleted != true && s.IsPublish == true);
+                queryAlrowadData = queryAlrowadData.Where(x => x.CountryId == CountryId);
+                if (SectorId > 0)
+                    queryAlrowadData = queryAlrowadData.Where(x => x.SectorId == SectorId);
+                var organizations = queryAlrowadData.GroupBy(s => s.OrganizationId);
+                return organizations.Count();
+            }
+
         }
-        public int LoadItemsDataSector()
+        public int LoadItemsDataSector(int? CountryId, int? SectorId)
         {
-            var dataquery = _context.Sector.Where(x => !x.IsDeleted);
-            var result = dataquery.AsQueryable();
-            return result.Count();
+            if (CountryId == 0)
+            {
+                var querySector = _context.Sector.Where(x => !x.IsDeleted && x.IsPublish == true);
+                if (SectorId > 0)
+                    querySector = querySector.Where(x => x.Id == SectorId);
+                var result = querySector.AsQueryable();
+                return result.Count();
+            }
+            else
+            {
+
+                var queryAlrowadData = _context.AlrowadData.Where(s => s.IsDeleted != true && s.IsPublish == true);
+                    queryAlrowadData = queryAlrowadData.Where(x => x.CountryId == CountryId);
+                if (SectorId > 0)
+                    queryAlrowadData = queryAlrowadData.Where(x =>x.SectorId == SectorId);
+                var sectors = queryAlrowadData.GroupBy(s => s.SectorId);
+                return sectors.Count();
+            }
+
         }
-        public int LoadItemsDataOrganzationWithoutValue()
+        public int LoadItemsDataOrganzationWithoutValue(int? CountryId, int? SectorId)
         {
             //  organization without values
             var dataquery = _context.AlrowadData.Where(x => !x.IsDeleted && x.ValueId == 56);
+            if (CountryId > 0)
+            {
+                dataquery = dataquery.Where(x => x.CountryId == CountryId);
+            }
+            if (SectorId > 0)
+            {
+                dataquery = dataquery.Where(x => x.SectorId == SectorId);
+            }
             var result = dataquery.AsQueryable();
             var distinctValues = result.
                      Select(x => x.OrganizationId).Distinct();
             return distinctValues.Count();
-            //var dataquery = _context.AlrowadData.Where(x => !x.IsDeleted && x.ValueId == null);
-            //var result = dataquery.AsQueryable();
-            //return result.Count();
         }
-        public int LoadItemsDataOrganzationWithValue()
+        public int LoadItemsDataOrganzationWithValue(int? CountryId, int? SectorId)
         {
             // organization with values
-            var dataquery = _context.AlrowadData.Where(x => !x.IsDeleted && x.ValueId != 56);
+            var dataquery = _context.AlrowadData.Where(x => !x.IsDeleted && x.ValueId != 56 && x.IsPublish == true);
+            if (CountryId > 0) {
+                dataquery = dataquery.Where(x=>x.CountryId == CountryId);
+            }
+            if (SectorId > 0) {
+                dataquery = dataquery.Where(x=>x.SectorId == SectorId);
+            }
             var result = dataquery.AsQueryable();
             var distinctValues = result.
                      Select(x => x.OrganizationId).Distinct();
             return distinctValues.Count();
-
         }
-        public int LoadItemsDataValue()
+        public int LoadItemsDataValue(int? CountryId, int? SectorId)
         {
-            // organization with values
-            var dataquery = _context.Value.Where(x => !x.IsDeleted);
-            var result = dataquery.AsQueryable();
-            return result.Count();
+            if (CountryId == 0)
+            {
 
+                if (SectorId > 0)
+                {
+                    var queryAlrowadData = _context.AlrowadData.Where(s => s.IsDeleted != true && s.IsPublish == true);
+                    queryAlrowadData = queryAlrowadData.Where(x => x.SectorId == SectorId);
+                    var organizations = queryAlrowadData.GroupBy(s => s.ValueId);
+                    return organizations.Count();
+                }
+
+                else
+                {
+                    var dataValue = _context.Value.Where(x => !x.IsDeleted && x.IsPublish == true);
+                    var result = dataValue.AsQueryable();
+                    return result.Count();
+                }
+
+            }
+            else
+            {
+
+                var queryAlrowadData = _context.AlrowadData.Where(s => s.IsDeleted != true && s.IsPublish == true);
+                queryAlrowadData = queryAlrowadData.Where(x => x.CountryId == CountryId);
+                if (SectorId > 0)
+                    queryAlrowadData = queryAlrowadData.Where(x => x.SectorId == SectorId);
+                var values = queryAlrowadData.GroupBy(s => s.ValueId) ;
+                return values.Count();
+            }
+            
         }
-        //public IList<TopTenViewModel> LoadItemsDataValueAndName()
-        //{
-        //    var dataquery = _context.Value.Where(x => !x.IsDeleted);
-        //    var result = dataquery.AsQueryable();
-        //    //return result.Count();
-        //}
-        //public void LoadItemsDataValueAndName()
-        //{
-        //    //var result = _context.AlrowadData.Join(_context.Value, c => c.ValueId, v => v.Id,
-        //    //   new TopTenViewModel {
-        //    //       ValueName = v.Name
-        //    //       ValueCount =
-        //    //   }).tolist() ;
-        //    //var query =
-        //    //from ad in AlrowadData
-        //    //join v in Value on ad.ValueID equals v.Id
-        //    //select new
-        //    //{
-        //    //    Name = v.name,
-        //    //    PetName = count ad.ValueId
-        //    //};
-        //    //    var dataquery = _context.AlrowadData.Join(AlrowadData, Value,AlrowadData.ValueId, Value.ID).
-        //    //SELECT COUNT(DISTINCT arw_data.organization_id) AS "Frequancy",
-        //    //    arw_values.title FROM arw_data INNER JOIN arw_values 
-        //    //    ON arw_data.value_id = arw_values.id group by
-        //    //    arw_data.value_id order by Frequancy DESC
-
-        //     var dataquery = _context.Value.Where(x => !x.IsDeleted);
-
-        //    var result = dataquery.AsQueryable();
-        //    //return result.Count();
-        //}
-    }
+    } //string sqlQuery = "select * from Organzation";
+      //SqlCommand sql = new SqlCommand(sqlQuery);
 }

@@ -20,5 +20,7 @@ namespace App.Application.ViewModels
         public SelectList CountryList { get; set; }
         public int SectorId { get; set; }
         public SelectList SectorList { get; set; }
+        public SelectList TopTenValueAndCountList { get; set; }
+        public SelectList CountryAndCountList { get; set; }
     }
 }

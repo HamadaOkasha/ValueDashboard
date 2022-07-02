@@ -18,7 +18,7 @@ namespace App.Application.Interfaces
         Task<Tuple<IList<CountryViewModel>, int>> LoadData(  string Search = null, int StatusId = 0 ,
            int jtStartIndex = 0, int jtPageSize = 10, string order = null, string orderDir = null);
         Task UpdateLocales(Country Country, CountryModel model);
-        HomeViewModel LoadDataTotal(int? country);
+        HomeViewModel LoadDataTotal(int? country, int? Sector);
         TopTenViewModel LoadDataValueAndCount();
     }
 }

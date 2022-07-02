@@ -11,11 +11,13 @@ namespace App.Application.Interfaces
         Task<IList<BaseViewModel>> GetParentList(string selectTitle = null);
         Task<IList<BaseViewModel>> GetCountryList(string selectTitle = null);
         Task<IList<BaseViewModel>> GetCategoryList(string selectTitle = null);
-        Task<IList<BaseViewModel>> GetSectorList(string selectTitle = null);
+        Task<IList<BaseViewModel>> GetSectorList(string selectTitle = null, int CountryId = 0);
         Task<IList<BaseViewModel>> GetOrganizationList(string selectTitle = null);
         Task<IList<BaseViewModel>> GetValueList(string selectTitle = null);
         Task<IList<BaseViewModel>> GetResearchValueList(string selectTitle = null);
         Task<IList<BaseViewModel>> GetVersionList(string selectTitle = null);
+        Task<IList<BaseViewModel>> GetValueAndCountList(string selectTitle = null, int CountryId=0);
+        Task<IList<BaseViewModel>> GetCountryAndCountList(string selectTitle = null, int Index=0);
 
     }
 }
